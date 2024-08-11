@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+
+<VBox minHeight="125.0" minWidth="800.0" stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/21">
+   <MenuBar>
+      <Menu mnemonicParsing="false" text="File">
+         <MenuItem mnemonicParsing="false" text="Close" />
+      </Menu>
+      <Menu mnemonicParsing="false" text="Edit">
+         <MenuItem mnemonicParsing="false" text="Delete" />
+      </Menu>
+      <Menu mnemonicParsing="false" text="Help">
+         <MenuItem mnemonicParsing="false" text="About" />
+      </Menu>
+   </MenuBar>
+   <HBox alignment="CENTER" styleClass="header">
+      <Region HBox.hgrow="ALWAYS" />
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="100.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../../Images/Template/MOE_Logo.png" />
+      </ImageView>
+      <Region HBox.hgrow="ALWAYS" />
+      <VBox alignment="CENTER" prefHeight="100.0" prefWidth="375.0" spacing="3.0" HBox.hgrow="ALWAYS">
+         <Label styleClass="label-white, label-large" text="Discipline Record Management System" />
+         <Label styleClass="label-white, label-large" text="DRMS Portal" />
+         <Line endX="100.0" startX="-100.0" styleClass="line-white" />
+         <Label styleClass="label-white, label-medium" text="Ministry of Education - Sri Lanka" />
+      </VBox>
+      <Region HBox.hgrow="ALWAYS" />
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../../Images/Template/RightSide_Icon.png" />
+      </ImageView>
+      <Region HBox.hgrow="ALWAYS" />
+   </HBox>
+</VBox>

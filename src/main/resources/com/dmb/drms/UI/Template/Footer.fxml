@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+
+<HBox alignment="CENTER" minHeight="40.0" minWidth="800.0" styleClass="footer-box" stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/21">
+      <Region HBox.hgrow="ALWAYS" />
+      <Label styleClass="footer-label" text="© 2024 Data Management Branch - Ministry of Education" HBox.hgrow="ALWAYS" />
+      <Region HBox.hgrow="ALWAYS" />
+</HBox>

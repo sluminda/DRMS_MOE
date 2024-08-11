@@ -1,0 +1,293 @@
+light gray :  #e6eaeb
+
+
+=== Subject Clerk and User can be Linked ?
+=== Special Note Length in Daily Letters
+=== Letter File No vs FileRelToLetter
+=== Letter fields that can be null / Letter validations (use Special Note for any Prob)
+== Letter fields fully submitted same time or ?
+
+
+
+user
+password
+login
+handleLogin
+
+
+
+
+================================================================================
+
+Palette 1: Classic Blue and Gray
+
+:root {
+    --primary-color: #2A3E4C;  /* Dark Blue */
+    --secondary-color: #DAE1E7;  /* Light Gray */
+    --submit-button-color: #4A90E2;  /* Blue */
+    --submit-button-hover-color: #357ABD;  /* Darker Blue */
+    --clear-button-color: #D9534F;  /* Red */
+    --clear-button-hover-color: #C9302C;  /* Darker Red */
+    --container-color-1: #FFFFFF;  /* White */
+    --container-color-2: #F7F9FB;  /* Very Light Gray */
+    --container-color-3: #E1E8ED;  /* Light Gray */
+    --border-color: #C5C9CC;  /* Gray */
+    --text-color: #2A3E4C;  /* Dark Blue */
+    --background-color: #F4F6F8;  /* Light Background Gray */
+}
+
+Palette 2: Navy and Teal
+
+:root {
+    --primary-color: #001F3F;  /* Navy */
+    --secondary-color: #007BFF;  /* Bright Blue */
+    --submit-button-color: #39CCCC;  /* Teal */
+    --submit-button-hover-color: #008B8B;  /* Dark Cyan */
+    --clear-button-color: #FF4136;  /* Red */
+    --clear-button-hover-color: #E12D2B;  /* Darker Red */
+    --container-color-1: #FFFFFF;  /* White */
+    --container-color-2: #F0F8FF;  /* Alice Blue */
+    --container-color-3: #D1E8FF;  /* Light Blue */
+    --border-color: #B0C4DE;  /* Light Steel Blue */
+    --text-color: #001F3F;  /* Navy */
+    --background-color: #E6F7FF;  /* Very Light Blue */
+}
+
+Palette 4: Burgundy and Beige
+
+:root {
+    --primary-color: #800020;  /* Burgundy */
+    --secondary-color: #F5F5DC;  /* Beige */
+    --submit-button-color: #FFA07A;  /* Light Salmon */
+    --submit-button-hover-color: #FF8C69;  /* Darker Salmon */
+    --clear-button-color: #B22222;  /* Firebrick */
+    --clear-button-hover-color: #8B1A1A;  /* Darker Firebrick */
+    --container-color-1: #FFFFFF;  /* White */
+    --container-color-2: #FFF8DC;  /* Cornsilk */
+    --container-color-3: #FDEBD0;  /* Light Beige */
+    --border-color: #D2B48C;  /* Tan */
+    --text-color: #800020;  /* Burgundy */
+    --background-color: #FAF0E6;  /* Light Background Beige */
+}
+
+================================================================================
+
+Palette 1: Oceanic Blues and Greens
+Header/Footer Background: #1A3A6B (Dark Blue)
+Title Color: #FFFFFF (White)
+Heading Color: #EFCB68 (Gold)
+Subheading Color: #B8D0EB (Light Blue)
+Paragraph Color: #4A4A4A (Dark Gray)
+Container Color 1: #DFF6F0 (Very Light Green)
+Container Color 2: #B8D0EB (Light Blue)
+Container Color 3: #E0E7FF (Very Light Blue)
+Close Button Color: #FF6B6B (Coral Red)
+Submit Button Color: #1A3A6B (Dark Blue)
+Clear Button Color: #EFCB68 (Gold)
+Close Button Hover: #FF4C4C (Red)
+Submit Button Hover: #162D52 (Darker Blue)
+Clear Button Hover: #D3AB58 (Dark Gold)
+
+
+
+Palette 2: Earthy Greens and Browns
+Header/Footer Background: #2C5F2D (Dark Green)
+Title Color: #FFFFFF (White)
+Heading Color: #B8B799 (Beige)
+Subheading Color: #D5E8D4 (Light Green)
+Paragraph Color: #3D3D3D (Dark Gray)
+Container Color 1: #E9F3EC (Very Light Green)
+Container Color 2: #C9DFCA (Light Green)
+Container Color 3: #F2E6D6 (Very Light Brown)
+Close Button Color: #E27D60 (Light Brown)
+Submit Button Color: #2C5F2D (Dark Green)
+Clear Button Color: #B8B799 (Beige)
+Close Button Hover: #CC6A50 (Brown)
+Submit Button Hover: #224921 (Darker Green)
+Clear Button Hover: #A4A07B (Dark Beige)
+
+
+
+
+Palette 3: Sophisticated Burgundy and Cream
+Header/Footer Background: #4E1E3A (Burgundy)
+Title Color: #FFFFFF (White)
+Heading Color: #FFDAB9 (Peach)
+Subheading Color: #F5E6DA (Cream)
+Paragraph Color: #4A4A4A (Dark Gray)
+Container Color 1: #FCEFEF (Very Light Pink)
+Container Color 2: #F5E6DA (Cream)
+Container Color 3: #FFE4E1 (Very Light Peach)
+Close Button Color: #FF6B6B (Coral Red)
+Submit Button Color: #4E1E3A (Burgundy)
+Clear Button Color: #FFDAB9 (Peach)
+Close Button Hover: #FF4C4C (Red)
+Submit Button Hover: #3C172E (Darker Burgundy)
+Clear Button Hover: #E6BE99 (Dark Peach)
+
+
+
+
+Palette 4: Modern Navy and Coral
+Header/Footer Background: #34495E (Navy Blue)
+Title Color: #FFFFFF (White)
+Heading Color: #FF6F61 (Coral)
+Subheading Color: #BDC3C7 (Light Gray)
+Paragraph Color: #4A4A4A (Dark Gray)
+Container Color 1: #ECF0F1 (Very Light Gray)
+Container Color 2: #D5D8DC (Light Gray)
+Container Color 3: #FDEDEC (Very Light Coral)
+Close Button Color: #E74C3C (Red)
+Submit Button Color: #34495E (Navy Blue)
+Clear Button Color: #FF6F61 (Coral)
+Close Button Hover: #C0392B (Darker Red)
+Submit Button Hover: #2C3E50 (Darker Navy)
+Clear Button Hover: #FF5341 (Dark Coral)
+
+
+
+
+Palette 5: Elegant Teal and Sand
+Header/Footer Background: #006D77 (Teal)
+Title Color: #FFFFFF (White)
+Heading Color: #83C5BE (Light Teal)
+Subheading Color: #EDF6F9 (Very Light Blue)
+Paragraph Color: #4A4A4A (Dark Gray)
+Container Color 1: #E8F6F3 (Very Light Teal)
+Container Color 2: #C6E2E0 (Light Teal)
+Container Color 3: #FDF6EC (Very Light Sand)
+Close Button Color: #E27D60 (Light Brown)
+Submit Button Color: #006D77 (Teal)
+Clear Button Color: #83C5BE (Light Teal)
+Close Button Hover: #CC6A50 (Brown)
+Submit Button Hover: #00595D (Darker Teal)
+Clear Button Hover: #6FAAA8 (Dark Teal)
+
+
+
+
+Palette 6: Classic Black and Gold
+Header/Footer Background: #2C3E50 (Dark Blue)
+Title Color: #FFFFFF (White)
+Heading Color: #D4AF37 (Gold)
+Subheading Color: #BDC3C7 (Light Gray)
+Paragraph Color: #4A4A4A (Dark Gray)
+Container Color 1: #ECF0F1 (Very Light Gray)
+Container Color 2: #D5D8DC (Light Gray)
+Container Color 3: #FDF6EC (Very Light Sand)
+Close Button Color: #E74C3C (Red)
+Submit Button Color: #D4AF37 (Gold)
+Clear Button Color: #BDC3C7 (Light Gray)
+Close Button Hover: #C0392B (Darker Red)
+Submit Button Hover: #B89830 (Dark Gold)
+Clear Button Hover: #A6A9AC (Dark Gray)
+
+
+
+
+
+Palette 7: Fresh Lime and Aqua
+Header/Footer Background: #2A9D8F (Teal)
+Title Color: #FFFFFF (White)
+Heading Color: #E9C46A (Lime)
+Subheading Color: #EAF2F1 (Very Light Aqua)
+Paragraph Color: #4A4A4A (Dark Gray)
+Container Color 1: #F0F8F7 (Very Light Aqua)
+Container Color 2: #D4EDE8 (Light Aqua)
+Container Color 3: #FFFAF1 (Very Light Lime)
+Close Button Color: #E76F51 (Coral Red)
+Submit Button Color: #2A9D8F (Teal)
+Clear Button Color: #E9C46A (Lime)
+Close Button Hover: #D95B42 (Red)
+Submit Button Hover: #247E76 (Darker Teal)
+Clear Button Hover: #D4B156 (Dark Lime)
+
+
+
+
+Palette 8: Chic Purple and Mint
+Header/Footer Background: #5A189A (Dark Purple)
+Title Color: #FFFFFF (White)
+Heading Color: #9D4EDD (Purple)
+Subheading Color: #DDA0DD (Light Purple)
+Paragraph Color: #4A4A4A (Dark Gray)
+Container Color 1: #F3E9F3 (Very Light Purple)
+Container Color 2: #E0CFE0 (Light Purple)
+Container Color 3: #E0FFFC (Very Light Mint)
+Close Button Color: #FF6B6B (Coral Red)
+Submit Button Color: #9D4EDD (Purple)
+Clear Button Color: #DDA0DD (Light Purple)
+Close Button Hover: #FF4C4C (Red)
+Submit Button Hover: #7A3DB8 (Darker Purple)
+Clear Button Hover: #C084BD (Dark Purple)
+
+
+
+Palette 9: Vibrant Orange and Blue
+Header/Footer Background: #F15BB5 (Bright Pink)
+Title Color: #FFFFFF (White)
+Heading Color: #F9C74F (Bright Yellow)
+Subheading Color: #90BE6D (Green)
+Paragraph Color: #4A4A4A (Dark Gray)
+Container Color 1: #FFE5D9 (Very Light Pink)
+Container Color 2: #FFC1C1 (Light Pink)
+Container Color 3: #FFEA8A (Very Light Yellow)
+Close Button Color: #FF6B6B (Coral Red)
+Submit Button Color: #F15BB5 (Bright Pink)
+Clear Button Color: #F9C74F (Bright Yellow)
+Close Button Hover: #FF4C4C (Red)
+Submit Button Hover: #D64099 (Darker Pink)
+Clear Button Hover: #D7A93F (Dark Yellow)
+
+
+
+Palette 10: Soft Pastel Tones
+Header/Footer Background: #4361EE (Blue)
+Title Color: #FFFFFF (White)
+Heading Color: #F72585 (Magenta)
+Subheading Color: #B5179E (Purple)
+Paragraph Color: #4A4A4A (Dark Gray)
+Container Color 1: #F1F0FF (Very Light Blue)
+Container Color 2: #EFE9F5 (Light Purple)
+Container Color 3: #FFF2F2 (Very Light Pink)
+Close Button Color: #FF6B6B (Coral Red)
+Submit Button Color: #4361EE (Blue)
+Clear Button Color: #F72585 (Magenta)
+Close Button Hover: #FF4C4C (Red)
+Submit Button Hover: #3A52C0 (Darker Blue)
+Clear Button Hover: #D51D6B (Dark Magenta)
+
+
+=================================================
+
+I have fxml file for login.
+
+fxid "user" for username
+fxid "password" for password
+fxid "login" for login button
+
+and this is my table.
+
+CREATE TABLE users (
+                       id INT AUTO_INCREMENT PRIMARY KEY,
+                       username VARCHAR(255) NOT NULL UNIQUE,
+                       password_hash CHAR(100) NOT NULL,
+                       salt CHAR(100) NOT NULL,
+                       role ENUM('Owner', 'Super Admin', 'Admin') NOT NULL,
+                       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+        String url = "jdbc:mysql://localhost:3306/drms";
+        String user = "root";
+        String dbPassword = "1220";
+
+if user log as Owner,
+
+
+
+if user login success, it redirect to mainPage.fxml. but it just a layout page that combined header, body and footer from other fxml files.
+
+com/discipline/drms/interfaces/body/main_panel.fxml
+
+this is the file that I want to hide vboxes when user login. but user
