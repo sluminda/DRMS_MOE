@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<VBox minHeight="125.0" minWidth="800.0" stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox styleClass="main-width" stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <MenuBar>
       <Menu mnemonicParsing="false" text="File">
          <MenuItem mnemonicParsing="false" text="Close" />
@@ -24,33 +25,56 @@
          <MenuItem mnemonicParsing="false" text="About" />
       </Menu>
    </MenuBar>
-   <HBox alignment="CENTER" styleClass="header">
+   <HBox alignment="CENTER">
       <Region HBox.hgrow="ALWAYS" />
       <ImageView cache="true" cacheHint="SPEED" fitHeight="100.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
          <Image url="@../../Images/Template/MOE_Logo.png" />
       </ImageView>
       <Region HBox.hgrow="ALWAYS" />
-      <VBox alignment="CENTER" prefHeight="100.0" prefWidth="375.0" spacing="3.0" HBox.hgrow="ALWAYS">
-         <Label styleClass="label-white, label-large" text="Discipline Record Management System" />
-         <Label styleClass="label-white, label-large" text="DRMS Portal" />
+      <VBox HBox.hgrow="ALWAYS">
+         <Label text="Discipline Record Management System">
+            <styleClass>
+               <String fx:value="label-white" />
+               <String fx:value="label-large" />
+            </styleClass></Label>
+         <Label text="DRMS Portal">
+            <styleClass>
+               <String fx:value="label-white" />
+               <String fx:value="label-large" />
+            </styleClass></Label>
          <Line endX="100.0" startX="-100.0" styleClass="line-white" />
-         <Label styleClass="label-white, label-medium" text="Ministry of Education - Sri Lanka" />
+         <Label text="Ministry of Education - Sri Lanka">
+            <styleClass>
+               <String fx:value="label-white" />
+               <String fx:value="label-medium" />
+            </styleClass></Label>
+         <styleClass>
+            <String fx:value="center" />
+            <String fx:value="bold" />
+         </styleClass>
       </VBox>
       <Region HBox.hgrow="ALWAYS" />
-      <HBox prefHeight="100.0" prefWidth="164.0" styleClass="profile-container" HBox.hgrow="ALWAYS">
-         <children>
-            <ImageView cache="true" cacheHint="SPEED" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Images/Body/AdminPanel/User.png" />
-               </image></ImageView>
-            <MenuButton mnemonicParsing="false" text="Lumi">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Settings" />
-                <MenuItem mnemonicParsing="false" text="Logout" />
-              </items>
-            </MenuButton>
-         </children>
+      <HBox HBox.hgrow="ALWAYS">
+         <styleClass>
+            <String fx:value="center"/>
+            <String fx:value="space-small"/>
+         </styleClass>
+         <ImageView cache="true" cacheHint="SPEED" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true"
+                    preserveRatio="true">
+            <Image url="@../../Images/Body/AdminPanel/User.png"/>
+         </ImageView>
+         <MenuButton mnemonicParsing="false" text="Lumi">
+            <items>
+               <MenuItem mnemonicParsing="false" text="Settings"/>
+               <MenuItem mnemonicParsing="false" text="Logout"/>
+            </items>
+         </MenuButton>
       </HBox>
       <Region HBox.hgrow="ALWAYS" />
+      <styleClass>
+         <String fx:value="header-height" />
+         <String fx:value="navy-blue" />
+         <String fx:value="center" />
+      </styleClass>
    </HBox>
 </VBox>

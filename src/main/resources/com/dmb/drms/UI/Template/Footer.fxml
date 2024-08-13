@@ -1,11 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 
-<HBox alignment="CENTER" minHeight="40.0" minWidth="800.0" styleClass="footer-box" stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/21">
-      <Region HBox.hgrow="ALWAYS" />
-      <Label styleClass="footer-label" text="© 2024 Data Management Branch - Ministry of Education" HBox.hgrow="ALWAYS" />
-      <Region HBox.hgrow="ALWAYS" />
+
+<HBox stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+      <Region minWidth="175.0" HBox.hgrow="ALWAYS" />
+      <Label text="© 2024 Data Management Branch - Ministry of Education" HBox.hgrow="ALWAYS">
+      <styleClass>
+         <String fx:value="label-medium" />
+         <String fx:value="bold" />
+         <String fx:value="label-white" />
+      </styleClass>
+   </Label>
+      <Region minWidth="95.0" HBox.hgrow="ALWAYS">
+      <HBox.margin>
+         <Insets />
+      </HBox.margin>
+   </Region>
+   <Label alignment="CENTER" minWidth="80.0" text="Disconnected">
+      <styleClass>
+         <String fx:value="label-small" />
+         <String fx:value="red" />
+      </styleClass>
+   </Label>
+   <Region />
+   <styleClass>
+      <String fx:value="navy-blue" />
+      <String fx:value="center" />
+      <String fx:value="main-width" />
+      <String fx:value="footer-height" />
+   </styleClass>
 </HBox>

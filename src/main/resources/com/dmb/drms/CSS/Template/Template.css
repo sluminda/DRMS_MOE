@@ -2,42 +2,61 @@
     -fx-font-family: 'Open Sans Bold', sans-serif;
 }
 
-.header {
+.main-width{
+    -fx-min-width: 800;
+}
+
+.header-height{
+    -fx-min-height: 100;
+}
+
+.footer-height{
+    -fx-min-height: 35;
+}
+
+.navy-blue {
     -fx-background-color: #34495E;
+}
+
+.center {
+    -fx-alignment: center;
+    -fx-text-alignment: center;
 }
 
 .label-white {
     -fx-text-fill: #fcfcfc;
-    -fx-font-family: "Open Sans";
 }
 
 .label-large {
     -fx-font-size: 18.0;
-    -fx-font-weight: 800;
 }
 
 .label-medium {
     -fx-font-size: 16.0;
 }
 
+.label-regular{
+    -fx-font-size: 12.0;
+}
+
+.label-small {
+    -fx-font-size: 10.0;
+}
+
+.bold{
+    -fx-font-weight: bold;
+}
+
 .line-white {
     -fx-stroke: #fcfcfc;
 }
 
-.footer-box {
-    -fx-background-color: #34495E;
-    -fx-min-height: 40.0;
-    -fx-min-width: 800.0;
+.space-small {
+    -fx-spacing: 5;
 }
 
-.footer-label {
-    -fx-text-fill: WHITE;
-    -fx-font-family: "Open Sans";
-    -fx-font-size: 17.0;
-    -fx-pref-height: 25.0;
-    -fx-pref-width: 485.0;
-    -fx-alignment: CENTER;
-    -fx-font-weight: 800;
+.space-medium {
+    -fx-spacing: 10;
 }
 
 .profile-container{
@@ -45,3 +64,10 @@
     -fx-spacing: 10;
 }
 
+.green{
+    -fx-text-fill: #4fdd39;
+}
+
+.red{
+    -fx-text-fill: #f44336;
+}
