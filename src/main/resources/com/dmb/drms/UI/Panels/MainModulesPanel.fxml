@@ -12,11 +12,6 @@
    <children>
       <HBox minHeight="60.0" minWidth="800.0" styleClass="navigation">
          <children>
-            <ImageView cache="true" cacheHint="SPEED" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
-               <image>
-                  <Image url="@../../Images/Template/backward.png" />
-               </image>
-            </ImageView>
             <Region HBox.hgrow="ALWAYS" />
             <ImageView cache="true" cacheHint="SPEED" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -25,11 +20,6 @@
             </ImageView>
             <Label text="Main Modules" />
             <Region HBox.hgrow="ALWAYS" />
-            <ImageView cache="true" cacheHint="SPEED" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" styleClass="image">
-               <image>
-                  <Image url="@../../Images/Template/forward.png" />
-               </image>
-            </ImageView>
          </children>
       </HBox>
       <TilePane prefHeight="200.0" prefWidth="200.0" styleClass="container" tileAlignment="TOP_LEFT" VBox.vgrow="ALWAYS">

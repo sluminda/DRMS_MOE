@@ -19,7 +19,7 @@ public class MainApplication extends Application {
         rootLayout = fxmlLoader.load();
 
         // Load the login page initially
-        loadCenterContent("/com/dmb/drms/UI/Panels/MainModules.fxml", false);
+        loadCenterContent("/com/dmb/drms/UI/Panels/MainModulesPanel.fxml", false);
 
         // Set the scene and show the stage
         Scene scene = new Scene(rootLayout, 800, 600);

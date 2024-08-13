@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<VBox minHeight="125.0" minWidth="800.0" stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/21">
+<VBox minHeight="125.0" minWidth="800.0" stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <MenuBar>
       <Menu mnemonicParsing="false" text="File">
          <MenuItem mnemonicParsing="false" text="Close" />
@@ -25,7 +26,7 @@
    </MenuBar>
    <HBox alignment="CENTER" styleClass="header">
       <Region HBox.hgrow="ALWAYS" />
-      <ImageView cache="true" cacheHint="SPEED" fitHeight="100.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="100.0" fitWidth="240.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
          <Image url="@../../Images/Template/MOE_Logo.png" />
       </ImageView>
       <Region HBox.hgrow="ALWAYS" />
@@ -36,9 +37,20 @@
          <Label styleClass="label-white, label-medium" text="Ministry of Education - Sri Lanka" />
       </VBox>
       <Region HBox.hgrow="ALWAYS" />
-      <ImageView cache="true" cacheHint="SPEED" fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../../Images/Template/RightSide_Icon.png" />
-      </ImageView>
+      <HBox prefHeight="100.0" prefWidth="164.0" styleClass="profile-container" HBox.hgrow="ALWAYS">
+         <children>
+            <ImageView cache="true" cacheHint="SPEED" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/Body/AdminPanel/User.png" />
+               </image></ImageView>
+            <MenuButton mnemonicParsing="false" text="Lumi">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Settings" />
+                <MenuItem mnemonicParsing="false" text="Logout" />
+              </items>
+            </MenuButton>
+         </children>
+      </HBox>
       <Region HBox.hgrow="ALWAYS" />
    </HBox>
 </VBox>

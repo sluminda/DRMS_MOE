@@ -1,5 +1,5 @@
-*{
-
+* {
+    -fx-font-family: 'Open Sans Bold', sans-serif;
 }
 
 .header {
@@ -38,5 +38,10 @@
     -fx-pref-width: 485.0;
     -fx-alignment: CENTER;
     -fx-font-weight: 800;
+}
+
+.profile-container{
+    -fx-alignment: center;
+    -fx-spacing: 10;
 }
 

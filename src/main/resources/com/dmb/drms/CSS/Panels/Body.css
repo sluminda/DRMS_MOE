@@ -1,0 +1,21 @@
+* {
+    -fx-font-family: 'Open Sans Bold', sans-serif;
+}
+
+.label-text {
+    -fx-text-fill: white;
+}
+
+.h-box-color{
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-font-size: 14;
+    -fx-font-weight: 800;
+    -fx-background-color: #4A4A4A;
+    -fx-padding: 3 0;
+    -fx-background-radius: 10;
+}
+
+.h-box-color .label{
+    -fx-text-fill: white;
+}
