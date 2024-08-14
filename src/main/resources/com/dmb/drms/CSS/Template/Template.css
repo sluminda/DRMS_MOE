@@ -1,5 +1,5 @@
 * {
-    -fx-font-family: 'Open Sans Bold', sans-serif;
+    -fx-font-family: 'Open Sans', sans-serif;
 }
 
 .main-width{
@@ -8,6 +8,10 @@
 
 .header-height{
     -fx-min-height: 100;
+}
+
+.spacing{
+    -fx-spacing: 3;
 }
 
 .footer-height{

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,9 +9,9 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox minHeight="435.0" minWidth="800.0" styleClass="body" stylesheets="@../../CSS/Template/Layout.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox stylesheets="@../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox minHeight="60.0" minWidth="800.0" styleClass="navigation">
+      <HBox styleClass="header-container">
          <children>
             <Region HBox.hgrow="ALWAYS" />
             <ImageView cache="true" cacheHint="SPEED" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -18,63 +19,27 @@
                   <Image url="@../../Images/Body/MainModules/navigation.png" />
                </image>
             </ImageView>
-            <Label text="Main Modules" />
+            <Label styleClass="header-label" text="Main Modules" />
             <Region HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
-      <TilePane prefHeight="200.0" prefWidth="200.0" styleClass="container" tileAlignment="TOP_LEFT" VBox.vgrow="ALWAYS">
+      <TilePane styleClass="module-container" tileAlignment="TOP_LEFT" VBox.vgrow="ALWAYS">
          <children>
-            <VBox styleClass="modules">
+            <VBox styleClass="module">
                <children>
                   <ImageView cache="true" cacheHint="SPEED" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Images/Body/MainModules/dashboard-white.png" />
+                        <Image url="@../../Images/Body/UserManagement/user-manage.png" />
                      </image>
                   </ImageView>
-                  <Label text="Dashboard" />
-               </children>
-            </VBox>
-            <VBox styleClass="modules">
-               <children>
-                  <ImageView cache="true" cacheHint="SPEED" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Images/Body/MainModules/letters-white.png" />
-                     </image>
-                  </ImageView>
-                  <Label text="Daily Letters" />
-               </children>
-            </VBox>
-            <VBox styleClass="modules">
-               <children>
-                  <ImageView cache="true" cacheHint="SPEED" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Images/Body/MainModules/page-white.png" />
-                     </image>
-                  </ImageView>
-                  <Label text="Master Tables" />
-               </children>
-            </VBox>
-            <VBox styleClass="modules">
-               <children>
-                  <ImageView cache="true" cacheHint="SPEED" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Images/Body/MainModules/officer-white.png" />
-                     </image>
-                  </ImageView>
-                  <Label text="Admin Panel" />
-               </children>
-            </VBox>
-            <VBox styleClass="modules">
-               <children>
-                  <ImageView cache="true" cacheHint="SPEED" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Images/Body/MainModules/report-white.png" />
-                     </image>
-                  </ImageView>
-                  <Label text="Reports" />
+                  <Label text="User Management" />
                </children>
             </VBox>
          </children>
       </TilePane>
    </children>
+   <styleClass>
+      <String fx:value="-main-body-container" />
+      <String fx:value="spacing-small" />
+   </styleClass>
 </VBox>
