@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox minHeight="435.0" minWidth="800.0" prefHeight="2500.0" prefWidth="800.0" styleClass="-main-container" stylesheets="@../../../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<VBox minHeight="435.0" minWidth="800.0" styleClass="-main-container" stylesheets="@../../../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox styleClass="header-container">
          <children>
@@ -60,7 +60,7 @@
                               <HBox>
                                  <children>
                                     <Label minWidth="70.0" text="Full Name" />
-                                    <TextField />
+                                    <TextArea maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" wrapText="true" />
                                  </children>
                                  <styleClass>
                                     <String fx:value="center" />
@@ -90,7 +90,7 @@
                               <HBox>
                                  <children>
                                     <Label minWidth="70.0" text="Email" />
-                                    <TextArea maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" wrapText="true" />
+                                    <TextArea maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" wrapText="true" />
                                  </children>
                                  <styleClass>
                                     <String fx:value="top-center" />
@@ -118,134 +118,19 @@
                                  </styleClass>
                               </HBox>
                               <Separator prefWidth="200.0" />
-                              <TitledPane animated="false" collapsible="false" maxWidth="235.0" text="Module Access">
+                              <TitledPane collapsible="false" maxWidth="235.0" text="Privilages">
                                  <content>
                                     <VBox>
                                        <children>
-                                          <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Dashboard" />
-                                          <CheckBox mnemonicParsing="false" prefWidth="150.0" text="User Management" />
-                                          <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Master Tables" />
-                                          <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Reports" />
+                                          <CheckBox minWidth="160.0" mnemonicParsing="false" text="Dashboard" />
+                                          <CheckBox minWidth="160.0" mnemonicParsing="false" text="Reports" />
+                                          <CheckBox minWidth="160.0" mnemonicParsing="false" text="User Management" />
+                                          <CheckBox minWidth="160.0" mnemonicParsing="false" text="Daily Letters " />
+                                          <CheckBox minWidth="160.0" mnemonicParsing="false" text="Data Entry" />
                                        </children>
                                        <styleClass>
-                                          <String fx:value="spacing-medium" />
                                           <String fx:value="top-center" />
-                                       </styleClass>
-                                    </VBox>
-                                 </content>
-                              </TitledPane>
-                              <TitledPane animated="false" collapsible="false" maxWidth="235.0" text="Data Entry Access">
-                                 <content>
-                                    <VBox>
-                                       <children>
-                                          <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="175.0" text="Ministry of Education" />
-                                          <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="175.0" text="State Printing Corporation" />
-                                          <TitledPane expanded="false" text="Provinces">
-                                             <content>
-                                                <VBox>
-                                                   <children>
-                                                      <TitledPane expanded="false" text="Western">
-                                                         <content>
-                                                            <VBox>
-                                                               <children>
-                                                                  <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Colombo Zone" />
-                                                                  <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Gampaha Zone" />
-                                                                  <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Piliyandala Zone" />
-                                                                  <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Kalutara Zone" />
-                                                               </children>
-                                                               <styleClass>
-                                                                  <String fx:value="top-center" />
-                                                                  <String fx:value="spacing-medium" />
-                                                               </styleClass>
-                                                            </VBox>
-                                                         </content>
-                                                      </TitledPane>
-                                                      <TitledPane expanded="false" text="Southern">
-                                                         <content>
-                                                            <VBox>
-                                                               <children>
-                                                                  <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Galle District" />
-                                                                  <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Matara District" />
-                                                                  <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="150.0" text="Hambantota District" />
-                                                               </children>
-                                                               <styleClass>
-                                                                  <String fx:value="top-center" />
-                                                                  <String fx:value="spacing-medium" />
-                                                               </styleClass>
-                                                            </VBox>
-                                                         </content>
-                                                      </TitledPane>
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Central" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="North Central" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Northern" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="North Western" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Uva" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Sabaragamuwa" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Eastern" />
-                                                   </children>
-                                                   <styleClass>
-                                                      <String fx:value="top-center" />
-                                                      <String fx:value="spacing-medium" />
-                                                   </styleClass>
-                                                </VBox>
-                                             </content>
-                                          </TitledPane>
-                                          <TitledPane expanded="false" text="NCOE">
-                                             <content>
-                                                <VBox>
-                                                   <children>
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Addalachchenai" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Batticaloa" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Dharga Nagar" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Hapitigam" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Jaffna" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Maharagama" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Mahaweli" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Nilwala" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Pasdunrata" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Peradeniya" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Pulathisipura" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Ruhuna" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Ruwanpura" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Sariputta" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Siyane" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Sri Pada" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Uva" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Vavuniya" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Wayamba" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Narangalle" />
-                                                   </children>
-                                                   <styleClass>
-                                                      <String fx:value="top-center" />
-                                                      <String fx:value="spacing-medium" />
-                                                   </styleClass>
-                                                </VBox>
-                                             </content>
-                                          </TitledPane>
-                                          <TitledPane expanded="false" text="Teacher Training">
-                                             <content>
-                                                <VBox>
-                                                   <children>
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Kopay" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Balapitiya" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Giragama" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Gampola" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Addalachchenai" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Batticaloa" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Unawatuna" />
-                                                      <CheckBox mnemonicParsing="false" prefWidth="150.0" text="Kotagala" />
-                                                   </children>
-                                                   <styleClass>
-                                                      <String fx:value="top-center" />
-                                                      <String fx:value="spacing-medium" />
-                                                   </styleClass>
-                                                </VBox>
-                                             </content>
-                                          </TitledPane>
-                                       </children>
-                                       <styleClass>
                                           <String fx:value="spacing-medium" />
-                                          <String fx:value="top-center" />
                                        </styleClass>
                                     </VBox>
                                  </content>
