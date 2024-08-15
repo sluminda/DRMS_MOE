@@ -1,3 +1,60 @@
+<configuration>
+    <appender name="TEXTAREA" class="com.dmb.drms.utils.TextAreaAppender">
+        <!-- No additional configuration needed -->
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="TEXTAREA"/>
+    </root>
+</configuration>
+
+
+package com.dmb.drms.utils;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
+
+public class LogViewerController {
+    @FXML
+    private TextArea logArea;
+
+    @FXML
+    public void initialize() {
+        TextAreaAppender.setLogArea(logArea);
+    }
+
+    public void appendLog(String message) {
+        // this used for logging
+    }
+}
+
+
+package com.dmb.drms.utils;
+
+import javafx.application.Platform;
+import javafx.scene.control.TextArea;
+import ch.qos.logback.core.AppenderBase;
+import ch.qos.logback.classic.spi.ILoggingEvent;
+
+public class TextAreaAppender extends AppenderBase<ILoggingEvent> {
+    private static TextArea logArea;
+
+    public static void setLogArea(TextArea logArea) {
+        TextAreaAppender.logArea = logArea;
+    }
+
+    @Override
+    protected void append(ILoggingEvent eventObject) {
+        final String message = eventObject.getFormattedMessage();
+        Platform.runLater(() -> {
+            if (logArea != null) {
+                logArea.appendText(message + "\n");
+            }
+        });
+    }
+}
+
+
 package com.dmb.drms;
 
 import com.dmb.drms.utils.LogViewerController;
@@ -134,3 +191,40 @@ public class MainApplication extends Application {
         launch();
     }
 }
+
+package com.dmb.drms.utils;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+public class SceneCache {
+    private static final Map<String, Parent> cache = new HashMap<>();
+
+    // Private constructor to prevent instantiation
+    private SceneCache() {
+        throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
+    }
+
+    public static Parent getScene(String fxmlPath) throws IOException {
+        if (cache.containsKey(fxmlPath)) {
+            return cache.get(fxmlPath);
+        }
+        FXMLLoader loader = new FXMLLoader(SceneCache.class.getResource(fxmlPath));
+        Parent scene = loader.load();
+        cache.put(fxmlPath, scene);
+        return scene;
+    }
+
+    public static void clearCache() {
+        cache.clear();
+    }
+}
+
+
+I want to display errors in to that textarea. and user can see it using ctrl + F12 and enter password.
+
+I want you to analyze the code fully and add performance friendly techniques. also software should not freeze if any error occour. I want best way possible. also use SonarLint rules and best way

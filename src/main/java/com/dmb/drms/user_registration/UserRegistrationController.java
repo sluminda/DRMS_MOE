@@ -1,5 +1,6 @@
 package com.dmb.drms.user_registration;
 
+import com.dmb.drms.MainApplication;
 import com.dmb.drms.utils.AlertUtil;
 import com.dmb.drms.utils.DBConnection;
 import com.dmb.drms.utils.PasswordUtil;
@@ -9,10 +10,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
 public class UserRegistrationController {
+
+    private static final Logger logger = LoggerFactory.getLogger(MainApplication.class);
 
     @FXML
     private TextArea name;
@@ -21,7 +26,7 @@ public class UserRegistrationController {
     @FXML
     private TextField nic;
     @FXML
-    private TextField email;
+    private TextArea email;
     @FXML
     private TextField phone;
     @FXML
@@ -63,11 +68,19 @@ public class UserRegistrationController {
 
     @FXML
     public void initialize() {
+        // Initialize ComboBox with user roles
         userRole.setItems(FXCollections.observableArrayList("Owner", "Super Admin", "Admin"));
+
+        // Configure the TableView columns
         configureTableView();
+
+        // Load users from the database
         loadUsers();
+
+        // Set up listeners for table row clicks and button actions
         setupListeners();
 
+        //Default Password
         password.setText("1234");
     }
 
@@ -80,18 +93,19 @@ public class UserRegistrationController {
         colPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         colUserRole.setCellValueFactory(new PropertyValueFactory<>("userRole"));
 
+        // Initialize the ObservableList
+        userData = FXCollections.observableArrayList();
         userListTable.setItems(userData);
     }
 
     private void loadUsers() {
-        userData = FXCollections.observableArrayList();
         String query = "SELECT User_ID, Name, User_Name, NIC, Email, Phone, User_Role FROM Users";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(query);
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                userData.add(new User(
+                User user = new User(
                         rs.getInt("User_ID"),
                         rs.getString("Name"),
                         rs.getString("User_Name"),
@@ -99,12 +113,15 @@ public class UserRegistrationController {
                         rs.getString("Email"),
                         rs.getString("Phone"),
                         rs.getString("User_Role")
-                ));
+                );
+                userData.add(user);
             }
         } catch (SQLException e) {
-            AlertUtil.showAlertError("Load Error", "Failed to load users from the database.");
+            e.printStackTrace(); // Print stack trace to get more details
+            AlertUtil.showAlertError("Database Error", "Failed to load users.");
         }
     }
+
 
     private void setupListeners() {
         userListTable.setOnMouseClicked(event -> {
@@ -140,15 +157,30 @@ public class UserRegistrationController {
             while (rs.next()) {
                 String moduleName = rs.getString("M_Name");
                 switch (moduleName) {
-                    case "Dashboard" -> dashboard.setSelected(true);
-                    case "Reports" -> reports.setSelected(true);
-                    case "Daily Letters" -> dailyLetters.setSelected(true);
-                    case "Inquiry" -> inquiry.setSelected(true);
-                    case "User Management" -> userManagement.setSelected(true);
+                    case "Dashboard":
+                        dashboard.setSelected(true);
+                        break;
+                    case "Reports":
+                        reports.setSelected(true);
+                        break;
+                    case "Daily Letters":
+                        dailyLetters.setSelected(true);
+                        break;
+                    case "Inquiry":
+                        inquiry.setSelected(true);
+                        break;
+                    case "User Management":
+                        userManagement.setSelected(true);
+                        break;
+                    default:
+                        // If a module name doesn't match, do nothing or log it
+                        System.out.println("Unknown module: " + moduleName);
+                        break;
                 }
             }
         } catch (SQLException e) {
-            AlertUtil.showAlertError("Load Error", "Failed to load user privileges.");
+            e.printStackTrace();
+            AlertUtil.showAlertError("Database Error", "Failed to load user privileges.");
         }
     }
 
@@ -188,13 +220,14 @@ public class UserRegistrationController {
                     AlertUtil.showAlertSuccess("Success", "User registered successfully.");
                 }
             } catch (SQLException e) {
-                AlertUtil.showAlertError("Insert Error", "Failed to insert user into the database.");
+                AlertUtil.showAlertError("Database Error", "Failed to insert user.");
+                e.printStackTrace();
             }
         }
     }
 
     private void insertPrivileges(int userID) {
-        String insertPrivilegeQuery = "INSERT INTO Privileges (User_ID, M_ID) VALUES (?, " +
+        String insertPrivilegeQuery = "INSERT INTO privileges (User_ID, M_ID) VALUES (?, " +
                 "(SELECT M_ID FROM Modules WHERE M_Name = ?))";
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement ps = conn.prepareStatement(insertPrivilegeQuery)) {
@@ -226,7 +259,8 @@ public class UserRegistrationController {
             }
             ps.executeBatch();
         } catch (SQLException e) {
-            AlertUtil.showAlertError("Privilege Error", "Failed to assign privileges.");
+            e.printStackTrace();
+            AlertUtil.showAlertError("Database Error", "Failed to assign privileges.");
         }
     }
 
@@ -248,23 +282,15 @@ public class UserRegistrationController {
                  PreparedStatement ps = conn.prepareStatement(deleteQuery)) {
                 ps.setInt(1, selectedUser.getUserID());
                 ps.executeUpdate();
-                loadUsers();
-                clearForm();
+                userData.remove(selectedUser);
                 AlertUtil.showAlertSuccess("Success", "User deleted successfully.");
             } catch (SQLException e) {
-                AlertUtil.showAlertError("Delete Error", "Failed to delete user.");
+                logger.info("This is an informational message.");
+                logger.debug("This is a debug message.");
+                logger.error("This is an error message.", e);
             }
+        } else {
+            AlertUtil.showAlertWarning("No Selection", "Please select a user to delete.");
         }
-    }
-
-    private void clearForm() {
-        name.clear();
-        username.clear();
-        nic.clear();
-        email.clear();
-        phone.clear();
-        password.clear();
-        userRole.setValue(null);
-        clearPrivilegeCheckboxes();
     }
 }

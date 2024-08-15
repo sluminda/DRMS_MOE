@@ -2,6 +2,10 @@ module com.dmb.drms {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires org.apache.commons.codec;
+    requires org.slf4j;
+    requires ch.qos.logback.core;
+    requires ch.qos.logback.classic;
 
 
     opens com.dmb.drms to javafx.fxml;
