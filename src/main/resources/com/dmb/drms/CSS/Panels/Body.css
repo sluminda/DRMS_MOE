@@ -30,6 +30,13 @@
     -fx-padding: 5;
 }
 
+.padding-medium {
+    -fx-padding: 15;
+}
+
+.padding-large {
+    -fx-padding: 25;
+}
 /*
 ----------------
 Headers & Titles
@@ -39,7 +46,7 @@ Headers & Titles
 .header-container {
     -fx-background-color: #34495E;
     -fx-background-radius: 10;
-    -fx-padding: 10 20;
+    -fx-padding: 5 20;
     -fx-alignment: center;
     -fx-spacing: 10;
 }
