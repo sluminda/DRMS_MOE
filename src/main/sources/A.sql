@@ -1,13 +1,4 @@
 
--- Create DRMS Database
-DROP DATABASE IF EXISTS drms;
-
-CREATE DATABASE drms
-    DEFAULT CHARACTER SET utf8mb4
-    DEFAULT COLLATE utf8mb4_unicode_ci;
-
-USE drms;
-
 -- -----------------------------------------------------
 -- Table `DRMS`.`Users`
 -- -----------------------------------------------------
@@ -31,7 +22,6 @@ CREATE TABLE IF NOT EXISTS `DRMS`.`Users` (
   COLLATE = utf8mb4_unicode_ci;
 
 
-
 -- -----------------------------------------------------
 -- Table `DRMS`.`Modules`
 -- -----------------------------------------------------
@@ -49,13 +39,15 @@ CREATE TABLE IF NOT EXISTS `DRMS`.`Modules` (
   DEFAULT CHARACTER SET = utf8mb4
   COLLATE = utf8mb4_unicode_ci;
 
-
+-- Example of inserting module records
 INSERT INTO modules (M_ID, M_Name, M_FX_ID, M_Action_ID, M_Image_Path) VALUES
                                                                            (1, 'Dashboard', 'dashboard', 'onSelectDashboard', 'com/dmb/drms/Images/Body/MainModules/dashboard-white.png'),
-                                                                           (2, 'Reports', 'reports', 'onSelectReports', 'com/dmb/drms/Images/Body/MainModules/report-white.png'),
-                                                                           (3, 'Daily Letters', 'dailyLetters', 'onSelectDailyLetters', 'com/dmb/drms/Images/Body/MainModules/letters-white.png'),
-                                                                           (4, 'Inquiry', 'inquiry', 'onSelectInquiry', 'com/dmb/drms/Images/Body/MainModules/officer-white.png'),
-                                                                           (5, 'User Management', 'userManagement', 'onSelectUserManagement', 'com/dmb/drms/Images/Body/MainModules/dashboard-white.png')
+                                                                           (2, 'Daily Letters', 'dailyLetters', 'onSelectDailyLetters', 'com/dmb/drms/Images/Body/MainModules/letters-white.png'),
+                                                                           (3, 'Inquiry', 'inquiry', 'onSelectInquiry', 'com/dmb/drms/Images/Body/MainModules/officer-white.png'),
+                                                                           (4, 'Reports', 'reports', 'onSelectReports', 'com/dmb/drms/Images/Body/MainModules/report-white.png'),
+                                                                           (5, 'Table Views', 'tableViews', 'onSelectTableViews', 'com/dmb/drms/Images/Body/MainModules/table-white.png'),
+                                                                           (6, 'Master Tables', 'masterTables', 'onSelectMasterTables', 'com/dmb/drms/Images/Body/MainModules/master-white.png'),
+                                                                           (7, 'User Management', 'userManagement', 'onSelectUserManagement', 'com/dmb/drms/Images/Body/MainModules/user-manage-white.png')
 
 
 
@@ -74,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `DRMS`.`Privileges` (
   INDEX (`User_ID`),
   INDEX (`M_ID`),
   FOREIGN KEY (`User_ID`) REFERENCES `DRMS`.`Users` (`User_ID`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE    -- Deletes privileges when a user is deleted
     ON UPDATE NO ACTION,
   FOREIGN KEY (`M_ID`) REFERENCES `DRMS`.`Modules` (`M_ID`)
     ON DELETE CASCADE

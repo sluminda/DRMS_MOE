@@ -9,37 +9,25 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox stylesheets="@../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <HBox styleClass="header-container">
-         <children>
-            <Region HBox.hgrow="ALWAYS" />
-            <ImageView cache="true" cacheHint="SPEED" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Images/Body/MainModules/navigation.png" />
-               </image>
-            </ImageView>
-            <Label styleClass="header-label" text="Main Modules" />
-            <Region HBox.hgrow="ALWAYS" />
-         </children>
-      </HBox>
-      <TilePane styleClass="module-container" tileAlignment="TOP_LEFT" VBox.vgrow="ALWAYS">
-         <children>
-            <VBox styleClass="module">
-               <children>
-                  <ImageView cache="true" cacheHint="SPEED" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../Images/Body/UserManagement/user-manage.png" />
-                     </image>
-                  </ImageView>
-                  <Label text="User Management" />
-               </children>
-            </VBox>
-         </children>
-      </TilePane>
-   </children>
+<VBox stylesheets="@../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <styleClass>
-      <String fx:value="-main-body-container" />
+      <String fx:value="-main-container" />
       <String fx:value="spacing-small" />
    </styleClass>
+   <HBox styleClass="header-container">
+      <Region HBox.hgrow="ALWAYS" />
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../../Images/Body/MainModules/navigation.png" />
+      </ImageView>
+      <Label styleClass="header-label" text="Main Modules" />
+      <Region HBox.hgrow="ALWAYS" />
+   </HBox>
+   <TilePane styleClass="module-container" tileAlignment="TOP_LEFT" VBox.vgrow="ALWAYS">
+      <VBox styleClass="module">
+         <ImageView cache="true" cacheHint="SPEED" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../Images/Body/UserManagement/user-manage.png" />
+         </ImageView>
+         <Label text="User Management" />
+      </VBox>
+   </TilePane>
 </VBox>

@@ -1,15 +1,14 @@
 package com.dmb.drms.user_registration;
 
-import com.dmb.drms.MainApplication;
 import com.dmb.drms.utils.AlertUtil;
 import com.dmb.drms.utils.DBConnection;
 import com.dmb.drms.utils.PasswordUtil;
 import com.dmb.drms.utils.sql.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +16,7 @@ import java.sql.*;
 
 public class UserRegistrationController {
 
-    private static final Logger logger = LoggerFactory.getLogger(MainApplication.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserRegistrationController.class);
 
     @FXML
     private TextArea name;
@@ -36,15 +35,21 @@ public class UserRegistrationController {
     @FXML
     private CheckBox dashboard;
     @FXML
-    private CheckBox reports;
-    @FXML
     private CheckBox dailyLetters;
     @FXML
     private CheckBox inquiry;
     @FXML
+    private CheckBox reports;
+    @FXML
+    private CheckBox tableViews;
+    @FXML
+    private CheckBox masterTables;
+    @FXML
     private CheckBox userManagement;
     @FXML
     private Button insertUser;
+    @FXML
+    private Button updateUser;
     @FXML
     private Button deleteUser;
     @FXML
@@ -64,233 +69,409 @@ public class UserRegistrationController {
     @FXML
     private TableColumn<User, String> colUserRole;
 
-    private ObservableList<User> userData;
+    private final ObservableList<User> userData = FXCollections.observableArrayList();
 
     @FXML
-    public void initialize() {
-        // Initialize ComboBox with user roles
+    private void initialize() {
         userRole.setItems(FXCollections.observableArrayList("Owner", "Super Admin", "Admin"));
-
-        // Configure the TableView columns
-        configureTableView();
-
-        // Load users from the database
-        loadUsers();
-
-        // Set up listeners for table row clicks and button actions
-        setupListeners();
-
-        //Default Password
         password.setText("1234");
-    }
+        loadUserData();
 
-    private void configureTableView() {
-        colID.setCellValueFactory(new PropertyValueFactory<>("userID"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colUsername.setCellValueFactory(new PropertyValueFactory<>("username"));
-        colNIC.setCellValueFactory(new PropertyValueFactory<>("nic"));
-        colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        colPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
-        colUserRole.setCellValueFactory(new PropertyValueFactory<>("userRole"));
-
-        // Initialize the ObservableList
-        userData = FXCollections.observableArrayList();
-        userListTable.setItems(userData);
-    }
-
-    private void loadUsers() {
-        String query = "SELECT User_ID, Name, User_Name, NIC, Email, Phone, User_Role FROM Users";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(query);
-             ResultSet rs = ps.executeQuery()) {
-
-            while (rs.next()) {
-                User user = new User(
-                        rs.getInt("User_ID"),
-                        rs.getString("Name"),
-                        rs.getString("User_Name"),
-                        rs.getString("NIC"),
-                        rs.getString("Email"),
-                        rs.getString("Phone"),
-                        rs.getString("User_Role")
-                );
-                userData.add(user);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // Print stack trace to get more details
-            AlertUtil.showAlertError("Database Error", "Failed to load users.");
-        }
-    }
-
-
-    private void setupListeners() {
         userListTable.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2 && !userListTable.getSelectionModel().isEmpty()) {
-                populateForm(userListTable.getSelectionModel().getSelectedItem());
+            if (event.getClickCount() == 1) {
+                populateFormFields();
             }
         });
 
-        insertUser.setOnAction(event -> insertUser());
-        deleteUser.setOnAction(event -> deleteUser());
+        colID.setCellValueFactory(cellData -> cellData.getValue().userIDProperty().asObject());
+        colName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        colUsername.setCellValueFactory(cellData -> cellData.getValue().usernameProperty());
+        colNIC.setCellValueFactory(cellData -> cellData.getValue().nicProperty());
+        colEmail.setCellValueFactory(cellData -> cellData.getValue().emailProperty());
+        colPhone.setCellValueFactory(cellData -> cellData.getValue().phoneProperty());
+        colUserRole.setCellValueFactory(cellData -> cellData.getValue().userRoleProperty());
+
+        userListTable.setItems(userData);
     }
 
-    private void populateForm(User user) {
-        name.setText(user.getName());
-        username.setText(user.getUsername());
-        nic.setText(user.getNic());
-        email.setText(user.getEmail());
-        phone.setText(user.getPhone());
-        userRole.setValue(user.getUserRole());
-
-        loadUserPrivileges(user.getUserID());
-    }
-
-    private void loadUserPrivileges(int userID) {
-        String query = "SELECT M_Name FROM Modules m " +
-                "INNER JOIN Privileges p ON m.M_ID = p.M_ID WHERE p.User_ID = ?";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(query)) {
-            ps.setInt(1, userID);
-            ResultSet rs = ps.executeQuery();
-
-            clearPrivilegeCheckboxes();
-            while (rs.next()) {
-                String moduleName = rs.getString("M_Name");
-                switch (moduleName) {
-                    case "Dashboard":
-                        dashboard.setSelected(true);
-                        break;
-                    case "Reports":
-                        reports.setSelected(true);
-                        break;
-                    case "Daily Letters":
-                        dailyLetters.setSelected(true);
-                        break;
-                    case "Inquiry":
-                        inquiry.setSelected(true);
-                        break;
-                    case "User Management":
-                        userManagement.setSelected(true);
-                        break;
-                    default:
-                        // If a module name doesn't match, do nothing or log it
-                        System.out.println("Unknown module: " + moduleName);
-                        break;
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            AlertUtil.showAlertError("Database Error", "Failed to load user privileges.");
-        }
-    }
-
-    private void clearPrivilegeCheckboxes() {
-        dashboard.setSelected(false);
-        reports.setSelected(false);
-        dailyLetters.setSelected(false);
-        inquiry.setSelected(false);
-        userManagement.setSelected(false);
-    }
-
+    @FXML
     private void insertUser() {
-        if (validateForm()) {
-            String salt = PasswordUtil.generateSalt();
-            String hashedPassword = PasswordUtil.hashPassword(password.getText(), salt);
+        if (!validateForm()) {
+            return;
+        }
 
-            String insertUserQuery = "INSERT INTO Users (Name, User_Name, NIC, Email, Phone, User_Role, Password_Hash, Password_Salt) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            try (Connection conn = DBConnection.getConnection();
-                 PreparedStatement ps = conn.prepareStatement(insertUserQuery, Statement.RETURN_GENERATED_KEYS)) {
+        String userNameValue = username.getText().trim();
+        String passwordValue = password.getText().trim();
 
-                ps.setString(1, name.getText());
-                ps.setString(2, username.getText());
-                ps.setString(3, nic.getText());
-                ps.setString(4, email.getText());
-                ps.setString(5, phone.getText());
-                ps.setString(6, userRole.getValue());
-                ps.setString(7, hashedPassword);
-                ps.setString(8, salt);
-                ps.executeUpdate();
+        String salt = PasswordUtil.generateSalt();
+        String hashedPassword = PasswordUtil.hashPassword(passwordValue, salt);
 
-                ResultSet rs = ps.getGeneratedKeys();
-                if (rs.next()) {
-                    int userID = rs.getInt(1);
-                    insertPrivileges(userID);
-                    loadUsers();
-                    AlertUtil.showAlertSuccess("Success", "User registered successfully.");
+        Task<Void> task = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                try (Connection conn = DBConnection.getConnection()) {
+                    conn.setAutoCommit(false); // Start transaction
+
+                    String insertUserSQL = "INSERT INTO Users (Name, User_Name, NIC, Email, Phone, User_Role, Password_Hash, Password_Salt) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement stmt = conn.prepareStatement(insertUserSQL, Statement.RETURN_GENERATED_KEYS);
+
+                    stmt.setString(1, name.getText().trim());
+                    stmt.setString(2, userNameValue);
+                    stmt.setString(3, nic.getText().trim());
+                    stmt.setString(4, email.getText().trim());
+                    stmt.setString(5, phone.getText().trim());
+                    stmt.setString(6, userRole.getValue());
+                    stmt.setString(7, hashedPassword);
+                    stmt.setString(8, salt);
+
+                    stmt.executeUpdate();
+
+                    ResultSet generatedKeys = stmt.getGeneratedKeys();
+                    int userId = 0;
+                    if (generatedKeys.next()) {
+                        userId = generatedKeys.getInt(1);
+                    }
+
+                    insertUserPrivileges(conn, userId);
+                    conn.commit(); // Commit transaction
+                } catch (SQLException e) {
+                    logger.error("Database Error: Error inserting user", e); // Log error to Logback
+                    AlertUtil.showAlertError("Database Error", "Error inserting user: " + e.getMessage());
+                    throw e;
                 }
-            } catch (SQLException e) {
-                AlertUtil.showAlertError("Database Error", "Failed to insert user.");
-                e.printStackTrace();
+                return null;
+            }
+
+            @Override
+            protected void succeeded() {
+                AlertUtil.showAlertSuccess("Success", "User registered successfully!");
+                clearForm();
+                loadUserData();
+            }
+
+            @Override
+            protected void failed() {
+                logger.error("Failed to register user"); // Log generic failure message
+                AlertUtil.showAlertError("Database Error", "Failed to register user.");
+            }
+        };
+
+        new Thread(task).start(); // Run the task in the background
+    }
+
+    @FXML
+    private void updateUser() {
+        User selectedUser = userListTable.getSelectionModel().getSelectedItem();
+        if (selectedUser == null) {
+            AlertUtil.showAlertError("Selection Error", "No user selected for updating!");
+            return;
+        }
+
+        Task<Void> task = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                try (Connection conn = DBConnection.getConnection()) {
+                    conn.setAutoCommit(false); // Start transaction
+
+                    String updateUserSQL = "UPDATE Users SET Name = ?, User_Name = ?, NIC = ?, Email = ?, Phone = ?, User_Role = ? WHERE User_ID = ?";
+                    PreparedStatement stmt = conn.prepareStatement(updateUserSQL);
+
+                    stmt.setString(1, name.getText().trim());
+                    stmt.setString(2, username.getText().trim());
+                    stmt.setString(3, nic.getText().trim());
+                    stmt.setString(4, email.getText().trim());
+                    stmt.setString(5, phone.getText().trim());
+                    stmt.setString(6, userRole.getValue());
+                    stmt.setInt(7, selectedUser.getUserID());
+
+                    stmt.executeUpdate();
+                    updateUserPrivileges(conn, selectedUser.getUserID());
+                    conn.commit(); // Commit transaction
+                } catch (SQLException e) {
+                    logger.error("Database Error: Error updating user", e); // Log error to Logback
+                    AlertUtil.showAlertError("Database Error", "Error updating user: " + e.getMessage());
+                    throw e;
+                }
+                return null;
+            }
+
+            @Override
+            protected void succeeded() {
+                AlertUtil.showAlertSuccess("Success", "User updated successfully!");
+                clearForm();
+                loadUserData();
+            }
+
+            @Override
+            protected void failed() {
+                logger.error("Failed to update user"); // Log generic failure message
+                AlertUtil.showAlertError("Database Error", "Failed to update user.");
+            }
+        };
+
+        new Thread(task).start(); // Run the task in the background
+    }
+
+    @FXML
+    private void deleteUser() {
+        User selectedUser = userListTable.getSelectionModel().getSelectedItem();
+        if (selectedUser == null) {
+            AlertUtil.showAlertError("Selection Error", "No user selected for deletion!");
+            return;
+        }
+
+        boolean confirmed = AlertUtil.showConfirmationAlert("Confirm Deletion", "Are you sure you want to delete this user?");
+        if (!confirmed) return;
+
+        Task<Void> task = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                try (Connection conn = DBConnection.getConnection()) {
+                    String deleteUserSQL = "DELETE FROM Users WHERE User_ID = ?";
+                    PreparedStatement stmt = conn.prepareStatement(deleteUserSQL);
+                    stmt.setInt(1, selectedUser.getUserID());
+
+                    stmt.executeUpdate();
+                } catch (SQLException e) {
+                    logger.error("Database Error: Error deleting user", e); // Log error to Logback
+                    AlertUtil.showAlertError("Database Error", "Error deleting user: " + e.getMessage());
+                    throw e;
+                }
+                return null;
+            }
+
+            @Override
+            protected void succeeded() {
+                AlertUtil.showAlertSuccess("Success", "User deleted successfully!");
+                clearForm();
+                loadUserData();
+            }
+
+            @Override
+            protected void failed() {
+                logger.error("Failed to delete user"); // Log generic failure message
+                AlertUtil.showAlertError("Database Error", "Failed to delete user.");
+            }
+        };
+
+        new Thread(task).start(); // Run the task in the background
+    }
+
+    private void loadUserData() {
+        userData.clear();
+        Task<Void> task = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                try (Connection conn = DBConnection.getConnection()) {
+                    String fetchUsersSQL = "SELECT * FROM Users";
+                    Statement stmt = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery(fetchUsersSQL);
+
+                    while (rs.next()) {
+                        User user = new User(rs.getInt("User_ID"), rs.getString("Name"), rs.getString("User_Name"),
+                                rs.getString("NIC"), rs.getString("Email"), rs.getString("Phone"),
+                                rs.getString("User_Role"));
+                        userData.add(user);
+                    }
+                } catch (SQLException e) {
+                    logger.error("Database Error: Error loading users", e); // Log error to Logback
+                    AlertUtil.showAlertError("Database Error", "Error loading users: " + e.getMessage());
+                    throw e;
+                }
+                return null;
+            }
+
+            @Override
+            protected void failed() {
+                logger.error("Failed to load users"); // Log generic failure message
+                AlertUtil.showAlertError("Database Error", "Failed to load users.");
+            }
+        };
+
+        new Thread(task).start(); // Run the task in the background
+    }
+
+    private void insertUserPrivileges(Connection conn, int userId) throws SQLException {
+        String[] selectedPrivileges = {
+                dashboard.isSelected() ? "Dashboard" : null,
+                dailyLetters.isSelected() ? "Daily Letters" : null,
+                inquiry.isSelected() ? "Inquiry" : null,
+                reports.isSelected() ? "Reports" : null,
+                tableViews.isSelected() ? "Table Views" : null,
+                masterTables.isSelected() ? "Master Tables" : null,
+                userManagement.isSelected() ? "User Management" : null
+        };
+
+        String getModuleIdSQL = "SELECT M_ID FROM Modules WHERE M_Name = ?";
+        String insertPrivilegeSQL = "INSERT INTO Privileges (User_ID, M_ID) VALUES (?, ?)";
+
+        try (PreparedStatement moduleStmt = conn.prepareStatement(getModuleIdSQL);
+             PreparedStatement privilegeStmt = conn.prepareStatement(insertPrivilegeSQL)) {
+
+            for (String privilege : selectedPrivileges) {
+                if (privilege != null) {
+                    // Query the Modules table to get the M_ID for this privilege
+                    moduleStmt.setString(1, privilege);
+                    ResultSet rs = moduleStmt.executeQuery();
+
+                    if (rs.next()) {
+                        int moduleId = rs.getInt("M_ID");
+
+                        // Insert privilege into Privileges table
+                        privilegeStmt.setInt(1, userId);
+                        privilegeStmt.setInt(2, moduleId);
+                        privilegeStmt.addBatch();
+                    }
+                }
+            }
+            privilegeStmt.executeBatch(); // Execute all privilege inserts in a batch
+        }
+    }
+
+
+    private void updateUserPrivileges(Connection conn, int userId) throws SQLException {
+        String deletePrivilegesSQL = "DELETE FROM Privileges WHERE User_ID = ?";
+        String insertPrivilegesSQL = "INSERT INTO Privileges (User_ID, M_ID) VALUES (?, ?)";
+
+        try (PreparedStatement deleteStmt = conn.prepareStatement(deletePrivilegesSQL);
+             PreparedStatement insertStmt = conn.prepareStatement(insertPrivilegesSQL)) {
+
+            // Delete existing privileges
+            deleteStmt.setInt(1, userId);
+            deleteStmt.executeUpdate();
+
+            // Insert new privileges
+            String[] selectedPrivileges = {
+                    dashboard.isSelected() ? "Dashboard" : null,
+                    dailyLetters.isSelected() ? "Daily Letters" : null,
+                    inquiry.isSelected() ? "Inquiry" : null,
+                    reports.isSelected() ? "Reports" : null,
+                    tableViews.isSelected() ? "Table Views" : null,
+                    masterTables.isSelected() ? "Master Tables" : null,
+                    userManagement.isSelected() ? "User Management" : null
+            };
+
+            String getModuleIdSQL = "SELECT M_ID FROM Modules WHERE M_Name = ?";
+
+            try (PreparedStatement moduleStmt = conn.prepareStatement(getModuleIdSQL)) {
+                for (String privilege : selectedPrivileges) {
+                    if (privilege != null) {
+                        moduleStmt.setString(1, privilege);
+                        ResultSet rs = moduleStmt.executeQuery();
+
+                        if (rs.next()) {
+                            int moduleId = rs.getInt("M_ID");
+
+                            insertStmt.setInt(1, userId);
+                            insertStmt.setInt(2, moduleId);
+                            insertStmt.addBatch();
+                        }
+                    }
+                }
+                insertStmt.executeBatch(); // Execute all privilege inserts in a batch
             }
         }
     }
 
-    private void insertPrivileges(int userID) {
-        String insertPrivilegeQuery = "INSERT INTO privileges (User_ID, M_ID) VALUES (?, " +
-                "(SELECT M_ID FROM Modules WHERE M_Name = ?))";
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement ps = conn.prepareStatement(insertPrivilegeQuery)) {
-
-            if (dashboard.isSelected()) {
-                ps.setInt(1, userID);
-                ps.setString(2, "Dashboard");
-                ps.addBatch();
-            }
-            if (reports.isSelected()) {
-                ps.setInt(1, userID);
-                ps.setString(2, "Reports");
-                ps.addBatch();
-            }
-            if (dailyLetters.isSelected()) {
-                ps.setInt(1, userID);
-                ps.setString(2, "Daily Letters");
-                ps.addBatch();
-            }
-            if (inquiry.isSelected()) {
-                ps.setInt(1, userID);
-                ps.setString(2, "Inquiry");
-                ps.addBatch();
-            }
-            if (userManagement.isSelected()) {
-                ps.setInt(1, userID);
-                ps.setString(2, "User Management");
-                ps.addBatch();
-            }
-            ps.executeBatch();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            AlertUtil.showAlertError("Database Error", "Failed to assign privileges.");
-        }
-    }
 
     private boolean validateForm() {
-        if (name.getText().isEmpty() || username.getText().isEmpty() || nic.getText().isEmpty() ||
-                email.getText().isEmpty() || phone.getText().isEmpty() || password.getText().isEmpty() ||
-                userRole.getValue() == null) {
-            AlertUtil.showAlertWarning("Validation Error", "Please fill in all required fields.");
+        if (name.getText().trim().isEmpty() || username.getText().trim().isEmpty() || nic.getText().trim().isEmpty()
+                || email.getText().trim().isEmpty() || phone.getText().trim().isEmpty() || userRole.getValue() == null) {
+            AlertUtil.showAlertError("Validation Error", "All fields must be filled!");
             return false;
         }
         return true;
     }
 
-    private void deleteUser() {
+    @FXML
+    private void clearForm() {
+        name.clear();
+        username.clear();
+        nic.clear();
+        email.clear();
+        phone.clear();
+        userRole.getSelectionModel().clearSelection();
+        dashboard.setSelected(false);
+        dailyLetters.setSelected(false);
+        inquiry.setSelected(false);
+        reports.setSelected(false);
+        tableViews.setSelected(false);
+        masterTables.setSelected(false);
+        userManagement.setSelected(false);
+    }
+
+    private void populateFormFields() {
         User selectedUser = userListTable.getSelectionModel().getSelectedItem();
-        if (selectedUser != null && AlertUtil.showConfirmationAlert("Delete User", "Are you sure you want to delete this user?")) {
-            String deleteQuery = "DELETE FROM Users WHERE User_ID = ?";
-            try (Connection conn = DBConnection.getConnection();
-                 PreparedStatement ps = conn.prepareStatement(deleteQuery)) {
-                ps.setInt(1, selectedUser.getUserID());
-                ps.executeUpdate();
-                userData.remove(selectedUser);
-                AlertUtil.showAlertSuccess("Success", "User deleted successfully.");
-            } catch (SQLException e) {
-                logger.info("This is an informational message.");
-                logger.debug("This is a debug message.");
-                logger.error("This is an error message.", e);
-            }
-        } else {
-            AlertUtil.showAlertWarning("No Selection", "Please select a user to delete.");
+        if (selectedUser != null) {
+            name.setText(selectedUser.getName());
+            username.setText(selectedUser.getUsername());
+            nic.setText(selectedUser.getNic());
+            email.setText(selectedUser.getEmail());
+            phone.setText(selectedUser.getPhone());
+            userRole.setValue(selectedUser.getUserRole());
+
+            // Load user privileges
+            loadUserPrivileges(selectedUser.getUserID());
         }
+    }
+
+
+    private void loadUserPrivileges(int userId) {
+        String getPrivilegesSQL = "SELECT M_Name FROM Modules m JOIN Privileges p ON m.M_ID = p.M_ID WHERE p.User_ID = ?";
+
+        Task<Void> task = new Task<>() {
+            @Override
+            protected Void call() throws Exception {
+                try (Connection conn = DBConnection.getConnection();
+                     PreparedStatement stmt = conn.prepareStatement(getPrivilegesSQL)) {
+                    stmt.setInt(1, userId);
+                    ResultSet rs = stmt.executeQuery();
+
+                    // Clear all checkboxes first
+                    dashboard.setSelected(false);
+                    dailyLetters.setSelected(false);
+                    inquiry.setSelected(false);
+                    reports.setSelected(false);
+                    tableViews.setSelected(false);
+                    masterTables.setSelected(false);
+                    userManagement.setSelected(false);
+
+                    // Set checkboxes based on privileges
+                    while (rs.next()) {
+                        String moduleName = rs.getString("M_Name");
+                        switch (moduleName) {
+                            case "Dashboard":
+                                dashboard.setSelected(true);
+                                break;
+                            case "Daily Letters":
+                                dailyLetters.setSelected(true);
+                                break;
+                            case "Inquiry":
+                                inquiry.setSelected(true);
+                                break;
+                            case "Reports":
+                                reports.setSelected(true);
+                                break;
+                            case "Table Views":
+                                tableViews.setSelected(true);
+                                break;
+                            case "Master Tables":
+                                masterTables.setSelected(true);
+                                break;
+                            case "User Management":
+                                userManagement.setSelected(true);
+                                break;
+                        }
+                    }
+                } catch (SQLException e) {
+                    logger.error("Database Error: Error loading user privileges", e);
+                    AlertUtil.showAlertError("Database Error", "Error loading user privileges: " + e.getMessage());
+                    throw e;
+                }
+                return null;
+            }
+        };
+
+        new Thread(task).start(); // Run the task in the background
     }
 }

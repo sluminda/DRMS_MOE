@@ -18,157 +18,148 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox minHeight="435.0" minWidth="800.0" styleClass="-main-container" stylesheets="@../../../../CSS/Panels/Body.css"
-      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.dmb.drms.user_registration.UserRegistrationController">
+<VBox minHeight="435.0" minWidth="800.0" styleClass="-main-container" stylesheets="@../../../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.user_registration.UserRegistrationController">
    <HBox styleClass="header-container">
-      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@../../../../Images/Template/backward.png"/>
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../../../../Images/Template/backward.png" />
       </ImageView>
-      <Region HBox.hgrow="ALWAYS"/>
-      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true"
-                 preserveRatio="true">
-         <Image url="@../../../../Images/Body/UserManagement/user-manage.png"/>
+      <Region HBox.hgrow="ALWAYS" />
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../../../../Images/Body/UserManagement/user-manage.png" />
       </ImageView>
-      <Label styleClass="header-label" text="User Management"/>
-      <Region HBox.hgrow="ALWAYS"/>
-      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true"
-                 preserveRatio="true" visible="false">
-         <Image url="@../../../../Images/Template/forward.png"/>
+      <Label styleClass="header-label" text="User Management" />
+      <Region HBox.hgrow="ALWAYS" />
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <Image url="@../../../../Images/Template/forward.png" />
       </ImageView>
    </HBox>
    <HBox VBox.vgrow="ALWAYS">
       <styleClass>
-         <String fx:value="module-container"/>
-         <String fx:value="spacing-small"/>
+         <String fx:value="module-container" />
+         <String fx:value="spacing-small" />
       </styleClass>
       <VBox maxWidth="320.0" styleClass="spacing-small" HBox.hgrow="ALWAYS">
          <HBox styleClass="title-container">
-            <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true"
-                       preserveRatio="true">
-               <Image url="@../../../../Images/Body/UserManagement/user-add-color.png"/>
+            <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../../../../Images/Body/UserManagement/user-add-color.png" />
             </ImageView>
-            <Label text="User Registration"/>
+            <Label text="User Registration" />
          </HBox>
          <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
             <VBox>
                <styleClass>
-                  <String fx:value="padding-medium"/>
-                  <String fx:value="spacing-small"/>
-                  <String fx:value="top-center"/>
+                  <String fx:value="padding-medium" />
+                  <String fx:value="spacing-small" />
+                  <String fx:value="top-center" />
                </styleClass>
                <HBox>
                   <styleClass>
-                     <String fx:value="top-center"/>
-                     <String fx:value="spacing-small"/>
+                     <String fx:value="top-center" />
+                     <String fx:value="spacing-small" />
                   </styleClass>
-                  <Label minWidth="70.0" text="Name"/>
-                  <TextArea fx:id="name" maxHeight="50.0" maxWidth="150.0" minHeight="50.0"
-                            minWidth="150.0" wrapText="true"/>
+                  <Label minWidth="70.0" text="Name" />
+                  <TextArea fx:id="name" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" wrapText="true" />
                </HBox>
                <HBox>
                   <styleClass>
-                     <String fx:value="center"/>
-                     <String fx:value="spacing-small"/>
+                     <String fx:value="center" />
+                     <String fx:value="spacing-small" />
                   </styleClass>
-                  <Label minWidth="70.0" text="Username"/>
-                  <TextField fx:id="username"/>
+                  <Label minWidth="70.0" text="Username" />
+                  <TextField fx:id="username" />
                </HBox>
                <HBox>
                   <styleClass>
-                     <String fx:value="center"/>
-                     <String fx:value="spacing-small"/>
+                     <String fx:value="center" />
+                     <String fx:value="spacing-small" />
                   </styleClass>
-                  <Label minWidth="70.0" text="NIC"/>
-                  <TextField fx:id="nic"/>
+                  <Label minWidth="70.0" text="NIC" />
+                  <TextField fx:id="nic" />
                </HBox>
                <HBox>
                   <styleClass>
-                     <String fx:value="top-center"/>
-                     <String fx:value="spacing-small"/>
+                     <String fx:value="top-center" />
+                     <String fx:value="spacing-small" />
                   </styleClass>
-                  <Label minWidth="70.0" text="Email"/>
-                  <TextArea fx:id="email" maxHeight="50.0" maxWidth="150.0" minHeight="50.0"
-                            minWidth="150.0" wrapText="true"/>
+                  <Label minWidth="70.0" text="Email" />
+                  <TextArea fx:id="email" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" wrapText="true" />
                </HBox>
                <HBox>
                   <styleClass>
-                     <String fx:value="center"/>
-                     <String fx:value="spacing-small"/>
+                     <String fx:value="center" />
+                     <String fx:value="spacing-small" />
                   </styleClass>
-                  <Label minWidth="70.0" text="Phone"/>
-                  <TextField fx:id="phone"/>
+                  <Label minWidth="70.0" text="Phone" />
+                  <TextField fx:id="phone" />
                </HBox>
                <HBox>
                   <styleClass>
-                     <String fx:value="center"/>
-                     <String fx:value="spacing-small"/>
+                     <String fx:value="center" />
+                     <String fx:value="spacing-small" />
                   </styleClass>
-                  <Label minWidth="70.0" text="Password"/>
-                  <TextField fx:id="password" editable="false"/>
+                  <Label minWidth="70.0" text="Password" />
+                  <TextField fx:id="password" editable="false" />
                </HBox>
                <HBox>
                   <styleClass>
-                     <String fx:value="center"/>
-                     <String fx:value="spacing-small"/>
+                     <String fx:value="center" />
+                     <String fx:value="spacing-small" />
                   </styleClass>
-                  <Label minWidth="70.0" text="User Role"/>
-                  <ComboBox fx:id="userRole" prefWidth="150.0" promptText="Select"/>
+                  <Label minWidth="70.0" text="User Role" />
+                  <ComboBox fx:id="userRole" prefWidth="150.0" promptText="Select" />
                </HBox>
-               <Separator prefWidth="200.0"/>
+               <Separator prefWidth="200.0" />
                <TitledPane collapsible="false" maxWidth="235.0" text="Privilages">
                   <VBox>
                      <styleClass>
-                        <String fx:value="top-center"/>
-                        <String fx:value="spacing-medium"/>
+                        <String fx:value="top-center" />
+                        <String fx:value="spacing-medium" />
                      </styleClass>
-                     <CheckBox fx:id="dashboard" minWidth="160.0" mnemonicParsing="false"
-                               text="Dashboard"/>
-                     <CheckBox fx:id="reports" minWidth="160.0" mnemonicParsing="false"
-                               text="Reports"/>
-                     <CheckBox fx:id="dailyLetters" minWidth="160.0" mnemonicParsing="false"
-                               text="Daily Letters "/>
-                     <CheckBox fx:id="inquiry" minWidth="160.0" mnemonicParsing="false"
-                               text="Inquiry"/>
-                     <CheckBox fx:id="userManagement" minWidth="160.0" mnemonicParsing="false"
-                               text="User Management"/>
+                     <CheckBox fx:id="dashboard" minWidth="160.0" mnemonicParsing="false" text="Dashboard" />
+                     <CheckBox fx:id="dailyLetters" minWidth="160.0" mnemonicParsing="false" text="Daily Letters " />
+                     <CheckBox fx:id="inquiry" minWidth="160.0" mnemonicParsing="false" text="Inquiry" />
+                     <Separator prefWidth="200.0" />
+                     <CheckBox fx:id="reports" minWidth="160.0" mnemonicParsing="false" text="Reports" />
+                     <CheckBox fx:id="tableViews" minWidth="160.0" mnemonicParsing="false" text="Table Views" />
+                     <CheckBox fx:id="masterTables" minWidth="160.0" mnemonicParsing="false" text="Master Tables" />
+                     <Separator prefWidth="200.0" />
+                     <CheckBox fx:id="userManagement" minWidth="160.0" mnemonicParsing="false" text="User Management" />
                   </VBox>
                </TitledPane>
-               <Separator prefWidth="200.0"/>
+               <Separator prefWidth="200.0" />
                <HBox>
                   <styleClass>
-                     <String fx:value="spacing-small"/>
-                     <String fx:value="center"/>
+                     <String fx:value="spacing-small" />
+                     <String fx:value="center" />
                   </styleClass>
-                  <Button fx:id="insertUser" mnemonicParsing="false" text="Insert"/>
-                  <Button fx:id="deleteUser" mnemonicParsing="false" text="Delete"/>
+                  <Button fx:id="insertUser" mnemonicParsing="false" onAction="#insertUser" text="Insert" />
+                  <Button fx:id="updateUser" mnemonicParsing="false" onAction="#updateUser" text="Update" />
+                  <Button fx:id="deleteUser" mnemonicParsing="false" onAction="#deleteUser" text="Delete" />
+                  <Button fx:id="clearForm" mnemonicParsing="false" onAction="#clearForm" text="Clear" />
                </HBox>
             </VBox>
          </ScrollPane>
       </VBox>
       <VBox styleClass="spacing-small" HBox.hgrow="ALWAYS">
          <HBox styleClass="title-container">
-            <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true"
-                       preserveRatio="true">
-               <Image url="@../../../../Images/Body/UserManagement/user-add-color.png"/>
+            <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../../../../Images/Body/UserManagement/user-add-color.png" />
             </ImageView>
-            <Label text="Users List"/>
+            <Label text="Users List" />
          </HBox>
          <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
-            <TableView fx:id="userListTable" prefHeight="200.0" prefWidth="200.0"
-                       tableMenuButtonVisible="true">
+            <TableView fx:id="userListTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true">
                <columns>
-                  <TableColumn fx:id="colID" maxWidth="40.0" prefWidth="75.0" text="ID"/>
-                  <TableColumn fx:id="colName" prefWidth="75.0" text="Name"/>
-                  <TableColumn fx:id="colUsername" prefWidth="75.0" text="Username"/>
-                  <TableColumn fx:id="colNIC" prefWidth="75.0" text="NIC"/>
-                  <TableColumn fx:id="colEmail" prefWidth="75.0" text="Email"/>
-                  <TableColumn fx:id="colPhone" prefWidth="75.0" text="Phone"/>
-                  <TableColumn fx:id="colUserRole" prefWidth="75.0" text="User Role"/>
+                  <TableColumn fx:id="colID" maxWidth="40.0" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="colName" prefWidth="75.0" text="Name" />
+                  <TableColumn fx:id="colUsername" prefWidth="75.0" text="Username" />
+                  <TableColumn fx:id="colNIC" prefWidth="75.0" text="NIC" />
+                  <TableColumn fx:id="colEmail" prefWidth="75.0" text="Email" />
+                  <TableColumn fx:id="colPhone" prefWidth="75.0" text="Phone" />
+                  <TableColumn fx:id="colUserRole" prefWidth="75.0" text="User Role" />
                </columns>
                <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
          </ScrollPane>

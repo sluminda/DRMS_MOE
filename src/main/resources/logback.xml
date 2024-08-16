@@ -1,9 +1,13 @@
 <configuration>
-    <appender name="TEXTAREA" class="com.dmb.drms.utils.TextAreaAppender">
-        <!-- No additional configuration needed -->
+    <!-- Console Appender -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
     </appender>
 
-    <root level="DEBUG">
-        <appender-ref ref="TEXTAREA"/>
+    <!-- Set the root logger to log everything from INFO level and higher -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
     </root>
 </configuration>

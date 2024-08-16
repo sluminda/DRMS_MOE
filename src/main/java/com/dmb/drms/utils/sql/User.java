@@ -1,43 +1,115 @@
 package com.dmb.drms.utils.sql;
 
-public class User {
-    private int userID;
-    private String name;
-    private String username;
-    private String nic;
-    private String email;
-    private String phone;
-    private String userRole;
+import javafx.beans.property.*;
 
+public class User {
+    private final IntegerProperty userID;
+    private final StringProperty name;
+    private final StringProperty username;
+    private final StringProperty nic;
+    private final StringProperty email;
+    private final StringProperty phone;
+    private final StringProperty userRole;
+
+    // Constructor
     public User(int userID, String name, String username, String nic, String email, String phone, String userRole) {
-        this.userID = userID;
-        this.name = name;
-        this.username = username;
-        this.nic = nic;
-        this.email = email;
-        this.phone = phone;
-        this.userRole = userRole;
+        this.userID = new SimpleIntegerProperty(userID);
+        this.name = new SimpleStringProperty(name);
+        this.username = new SimpleStringProperty(username);
+        this.nic = new SimpleStringProperty(nic);
+        this.email = new SimpleStringProperty(email);
+        this.phone = new SimpleStringProperty(phone);
+        this.userRole = new SimpleStringProperty(userRole);
     }
 
-    // Getters and setters for each field
-    public int getUserID() { return userID; }
-    public void setUserID(int userID) { this.userID = userID; }
+    // Getters and setters for userID
+    public int getUserID() {
+        return userID.get();
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public void setUserID(int userID) {
+        this.userID.set(userID);
+    }
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
+    public IntegerProperty userIDProperty() {
+        return userID;
+    }
 
-    public String getNic() { return nic; }
-    public void setNic(String nic) { this.nic = nic; }
+    // Getters and setters for name
+    public String getName() {
+        return name.get();
+    }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public void setName(String name) {
+        this.name.set(name);
+    }
 
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
+    public StringProperty nameProperty() {
+        return name;
+    }
 
-    public String getUserRole() { return userRole; }
-    public void setUserRole(String userRole) { this.userRole = userRole; }
+    // Getters and setters for username
+    public String getUsername() {
+        return username.get();
+    }
+
+    public void setUsername(String username) {
+        this.username.set(username);
+    }
+
+    public StringProperty usernameProperty() {
+        return username;
+    }
+
+    // Getters and setters for nic
+    public String getNic() {
+        return nic.get();
+    }
+
+    public void setNic(String nic) {
+        this.nic.set(nic);
+    }
+
+    public StringProperty nicProperty() {
+        return nic;
+    }
+
+    // Getters and setters for email
+    public String getEmail() {
+        return email.get();
+    }
+
+    public void setEmail(String email) {
+        this.email.set(email);
+    }
+
+    public StringProperty emailProperty() {
+        return email;
+    }
+
+    // Getters and setters for phone
+    public String getPhone() {
+        return phone.get();
+    }
+
+    public void setPhone(String phone) {
+        this.phone.set(phone);
+    }
+
+    public StringProperty phoneProperty() {
+        return phone;
+    }
+
+    // Getters and setters for userRole
+    public String getUserRole() {
+        return userRole.get();
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole.set(userRole);
+    }
+
+    public StringProperty userRoleProperty() {
+        return userRole;
+    }
 }
