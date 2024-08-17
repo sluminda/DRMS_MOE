@@ -26,7 +26,7 @@ public class MainApplication extends Application {
             rootLayout = fxmlLoader.load();
 
             // Load the login page initially
-            loadCenterContent("/com/dmb/drms/UI/Panels/MainModules/UserManagement/UserRegistration.fxml", false);
+            loadCenterContent("/com/dmb/drms/UI/Panels/LoginPanel.fxml", false);
 
             // Set the scene and add a developer mode shortcut
             Scene scene = new Scene(rootLayout, 800, 600);
@@ -60,11 +60,6 @@ public class MainApplication extends Application {
         } catch (IOException e) {
             logger.error("Failed to load FXML file: {}", fxmlFilePath, e);
         }
-    }
-
-    public void handleLoginSuccess() {
-        loadCenterContent("/com/dmb/drms/UI/Panels/MainModulesPanel.fxml", true);
-        SceneCache.clearCache();
     }
 
 
