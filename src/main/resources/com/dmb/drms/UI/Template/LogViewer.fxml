@@ -4,8 +4,11 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="400.0" minWidth="600.0" styleClass="padding-medium" stylesheets="@../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.utils.LogViewerController">
-   <children>
-      <TextArea fx:id="logArea" editable="false" VBox.vgrow="ALWAYS" />
-   </children>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.dmb.drms.utils.DeveloperModeController">
+   <PasswordField fx:id="passwordField" promptText="Enter Developer Password"/>
+   <Button text="Unlock" onAction="#unlockDeveloperMode"/>
+   <TextArea fx:id="logArea" editable="false" wrapText="true"/>
 </VBox>
+

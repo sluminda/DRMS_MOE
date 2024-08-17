@@ -1,0 +1,114 @@
+2024-08-17 04:45:09 ERROR com.dmb.drms.MainApplication - Failed to load FXML file: /com/dmb/drms/UI/Panels/MainModules/UserManagement/UserRegistration.fxml
+javafx.fxml.LoadException: Error resolving onAction='#clearForm', either the event handler is not in the Namespace or there is an error in the script.
+/C:/Users/Luminda%20Saranga/Desktop/DRMS/target/classes/com/dmb/drms/UI/Panels/MainModules/UserManagement/UserRegistration.fxml:138
+
+	at javafx.fxml@21/javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2718)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader$Element.processEventHandlerAttributes(FXMLLoader.java:623)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader$ValueElement.processEndElement(FXMLLoader.java:783)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader.processEndElement(FXMLLoader.java:2969)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2654)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2563)
+	at javafx.fxml@21/javafx.fxml.FXMLLoader.load(FXMLLoader.java:2531)
+	at com.dmb.drms/com.dmb.drms.MainApplication.loadCenterContent(MainApplication.java:57)
+	at com.dmb.drms/com.dmb.drms.MainApplication.start(MainApplication.java:28)
+	at javafx.graphics@21/com.sun.javafx.application.LauncherImpl.lambda$launchApplication1$9(LauncherImpl.java:839)
+	at javafx.graphics@21/com.sun.javafx.application.PlatformImpl.lambda$runAndWait$12(PlatformImpl.java:483)
+	at javafx.graphics@21/com.sun.javafx.application.PlatformImpl.lambda$runLater$10(PlatformImpl.java:456)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)
+	at javafx.graphics@21/com.sun.javafx.application.PlatformImpl.lambda$runLater$11(PlatformImpl.java:455)
+	at javafx.graphics@21/com.sun.glass.ui.InvokeLaterDispatcher$Future.run(InvokeLaterDispatcher.java:95)
+	at javafx.graphics@21/com.sun.glass.ui.win.WinApplication._runLoop(Native Method)
+	at javafx.graphics@21/com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:185)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-08-17 04:46:56 ERROR c.d.d.u.UserRegistrationController - Database Error: Error inserting user
+java.sql.BatchUpdateException: Unknown column 'Module_Name' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createBatchUpdateException(SQLError.java:214)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchSerially(ClientPreparedStatement.java:882)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchInternal(ClientPreparedStatement.java:463)
+	at com.mysql.cj.jdbc.StatementImpl.executeBatch(StatementImpl.java:896)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController.insertUserPrivileges(UserRegistrationController.java:330)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController$1.call(UserRegistrationController.java:132)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController$1.call(UserRegistrationController.java:109)
+	at javafx.graphics@21/javafx.concurrent.Task$TaskCallable.call(Task.java:1399)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'Module_Name' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:987)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1165)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchSerially(ClientPreparedStatement.java:861)
+	... 8 common frames omitted
+2024-08-17 04:46:56 ERROR c.d.d.u.UserRegistrationController - Failed to register user
+2024-08-17 04:47:48 ERROR c.d.d.u.UserRegistrationController - Database Error: Error inserting user
+java.sql.BatchUpdateException: Unknown column 'Module_Name' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createBatchUpdateException(SQLError.java:214)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchSerially(ClientPreparedStatement.java:882)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchInternal(ClientPreparedStatement.java:463)
+	at com.mysql.cj.jdbc.StatementImpl.executeBatch(StatementImpl.java:896)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController.insertUserPrivileges(UserRegistrationController.java:330)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController$1.call(UserRegistrationController.java:132)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController$1.call(UserRegistrationController.java:109)
+	at javafx.graphics@21/javafx.concurrent.Task$TaskCallable.call(Task.java:1399)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'Module_Name' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:987)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1165)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchSerially(ClientPreparedStatement.java:861)
+	... 8 common frames omitted
+2024-08-17 04:47:48 ERROR c.d.d.u.UserRegistrationController - Failed to register user
+2024-08-17 04:49:09 ERROR c.d.d.u.UserRegistrationController - Database Error: Error inserting user
+java.sql.BatchUpdateException: Unknown column 'Module_Name' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createBatchUpdateException(SQLError.java:214)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchSerially(ClientPreparedStatement.java:882)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchInternal(ClientPreparedStatement.java:463)
+	at com.mysql.cj.jdbc.StatementImpl.executeBatch(StatementImpl.java:896)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController.insertUserPrivileges(UserRegistrationController.java:330)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController$1.call(UserRegistrationController.java:132)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController$1.call(UserRegistrationController.java:109)
+	at javafx.graphics@21/javafx.concurrent.Task$TaskCallable.call(Task.java:1399)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'Module_Name' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:987)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1165)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchSerially(ClientPreparedStatement.java:861)
+	... 8 common frames omitted
+2024-08-17 04:49:09 ERROR c.d.d.u.UserRegistrationController - Failed to register user
+2024-08-17 04:56:52 ERROR c.d.d.u.UserRegistrationController - Database Error: Error inserting user
+java.sql.BatchUpdateException: Unknown column 'Module_Name' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createBatchUpdateException(SQLError.java:214)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchSerially(ClientPreparedStatement.java:882)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchInternal(ClientPreparedStatement.java:463)
+	at com.mysql.cj.jdbc.StatementImpl.executeBatch(StatementImpl.java:896)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController.insertUserPrivileges(UserRegistrationController.java:330)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController$1.call(UserRegistrationController.java:132)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController$1.call(UserRegistrationController.java:109)
+	at javafx.graphics@21/javafx.concurrent.Task$TaskCallable.call(Task.java:1399)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'Module_Name' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:987)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1165)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeBatchSerially(ClientPreparedStatement.java:861)
+	... 8 common frames omitted
+2024-08-17 04:56:52 ERROR c.d.d.u.UserRegistrationController - Failed to register user
+2024-08-17 04:59:09 ERROR c.d.d.u.UserRegistrationController - Database Error: Error loading user privileges
+java.sql.SQLSyntaxErrorException: Unknown column 'Module_Name' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:112)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:114)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:987)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1055)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController$5.call(UserRegistrationController.java:366)
+	at com.dmb.drms/com.dmb.drms.user_registration.UserRegistrationController$5.call(UserRegistrationController.java:359)
+	at javafx.graphics@21/javafx.concurrent.Task$TaskCallable.call(Task.java:1399)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-08-17 04:59:09 ERROR c.d.d.u.UserRegistrationController - Failed to load user privileges

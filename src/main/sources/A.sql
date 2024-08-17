@@ -1,4 +1,11 @@
+-- Create DRMS Database
+DROP DATABASE IF EXISTS drms;
 
+CREATE DATABASE drms
+    DEFAULT CHARACTER SET utf8mb4
+    DEFAULT COLLATE utf8mb4_unicode_ci;
+
+USE drms;
 -- -----------------------------------------------------
 -- Table `DRMS`.`Users`
 -- -----------------------------------------------------
