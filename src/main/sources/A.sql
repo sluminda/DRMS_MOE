@@ -48,13 +48,13 @@ CREATE TABLE IF NOT EXISTS `DRMS`.`Modules` (
 
 -- Example of inserting module records
 INSERT INTO modules (M_ID, M_Name, M_FX_ID, M_Action_ID, M_Image_Path) VALUES
-                                                                           (1, 'Dashboard', 'dashboard', 'onSelectDashboard', 'com/dmb/drms/Images/Body/MainModules/dashboard-white.png'),
-                                                                           (2, 'Daily Letters', 'dailyLetters', 'onSelectDailyLetters', 'com/dmb/drms/Images/Body/MainModules/letters-white.png'),
-                                                                           (3, 'Inquiry', 'inquiry', 'onSelectInquiry', 'com/dmb/drms/Images/Body/MainModules/officer-white.png'),
-                                                                           (4, 'Reports', 'reports', 'onSelectReports', 'com/dmb/drms/Images/Body/MainModules/report-white.png'),
-                                                                           (5, 'Table Views', 'tableViews', 'onSelectTableViews', 'com/dmb/drms/Images/Body/MainModules/table-white.png'),
-                                                                           (6, 'Master Tables', 'masterTables', 'onSelectMasterTables', 'com/dmb/drms/Images/Body/MainModules/master-white.png'),
-                                                                           (7, 'User Management', 'userManagement', 'onSelectUserManagement', 'com/dmb/drms/Images/Body/MainModules/user-manage-white.png')
+                                                                           (1, 'Dashboard', 'dashboard', 'onSelectDashboard', '/com/dmb/drms/Images/Body/MainModules/dashboard-white.png'),
+                                                                           (2, 'Daily Letters', 'dailyLetters', 'onSelectDailyLetters', '/com/dmb/drms/Images/Body/MainModules/letters-white.png'),
+                                                                           (3, 'Inquiry', 'inquiry', 'onSelectInquiry', '/com/dmb/drms/Images/Body/MainModules/officer-white.png'),
+                                                                           (4, 'Reports', 'reports', 'onSelectReports', '/com/dmb/drms/Images/Body/MainModules/report-white.png'),
+                                                                           (5, 'Table Views', 'tableViews', 'onSelectTableViews', '/com/dmb/drms/Images/Body/MainModules/table-white.png'),
+                                                                           (6, 'Master Tables', 'masterTables', 'onSelectMasterTables', '/com/dmb/drms/Images/Body/MainModules/master-white.png'),
+                                                                           (7, 'User Management', 'userManagement', 'onSelectUserManagement', '/com/dmb/drms/Images/Body/MainModules/user-manage-white.png');
 
 
 

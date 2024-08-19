@@ -109,7 +109,7 @@
                   <ComboBox fx:id="userRole" prefWidth="150.0" promptText="Select" />
                </HBox>
                <Separator prefWidth="200.0" />
-               <TitledPane collapsible="false" maxWidth="235.0" text="Privilages">
+               <TitledPane collapsible="false" maxWidth="235.0" text="Privileges">
                   <VBox>
                      <styleClass>
                         <String fx:value="top-center" />
