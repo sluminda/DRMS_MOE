@@ -5,7 +5,7 @@ import com.dmb.drms.utils.sql.Session;
 import com.dmb.drms.utils.sql.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,7 +14,6 @@ import javafx.scene.layout.VBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,6 +36,13 @@ public class MainModulesPanelController {
                     logger.error("Failed to load modules asynchronously", ex);
                     return null;
                 });
+    }
+
+    private MainApplication mainApp; // Reference to the MainApplication
+
+    // Method to set the MainApplication instance
+    public void setMainApp(MainApplication mainApp) {
+        this.mainApp = mainApp;
     }
 
     private void loadModules() {
@@ -108,17 +114,12 @@ public class MainModulesPanelController {
         moduleContainer.getChildren().add(moduleBox);
     }
 
+    // To load the UserManagement.fxml into the BorderPane's center area
     private void loadUserManagementUI() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dmb/drms/UI/Panels/MainModules/UserManagement/UserManagement.fxml"));
-            VBox userManagementUI = loader.load();
-
-            // Replace the current content with the UserManagement UI
-            // Assuming there's a container in your scene where you want to load the new UI
-            moduleContainer.getChildren().setAll(userManagementUI);
-        } catch (IOException e) {
-            logger.error("Failed to load UserManagement.fxml", e);
+        if (mainApp != null) {
+            mainApp.loadCenterContent("/com/dmb/drms/UI/Panels/MainModules/UserManagement/UserManagement.fxml", true);
+        } else {
+            logger.error("MainApplication instance is null. Cannot load UserManagement UI.");
         }
     }
-
 }

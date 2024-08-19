@@ -507,3 +507,4 @@ Caused by: java.lang.IllegalArgumentException: Invalid URL or resource not found
 2024-08-19 20:08:44 ERROR c.d.drms.MainModulesPanelController - Failed to load image at path: ../../Images/Body/MainModules/officer-white.png
 2024-08-19 20:08:44 ERROR c.d.drms.MainModulesPanelController - Failed to load image at path: ../../Images/Body/MainModules/report-white.png
 2024-08-19 20:08:44 ERROR c.d.drms.MainModulesPanelController - Failed to load image at path: ../../Images/Body/MainModules/user-manage-white.png
+2024-08-19 22:18:21 ERROR c.d.drms.MainModulesPanelController - MainApplication instance is null. Cannot load UserManagement UI.

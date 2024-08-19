@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.slf4j.Logger;
@@ -125,8 +126,19 @@ public class LoginController {
 
     private void loadMainModulesPanel() {
         try {
+            // Clear the cache
             SceneCache.clearCache();
-            mainApp.loadCenterContent("/com/dmb/drms/UI/Panels/MainModulesPanel.fxml", true);
+
+            // Load the MainModulesPanel.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dmb/drms/UI/Panels/MainModulesPanel.fxml"));
+            VBox mainModulesPanel = loader.load();
+
+            // Get the controller and set the MainApplication reference
+            MainModulesPanelController controller = loader.getController();
+            controller.setMainApp(mainApp);
+
+            // Set the loaded panel to the center of the BorderPane
+            mainApp.getRootLayout().setCenter(mainModulesPanel);
 
             // Access the Header controller that was set earlier
             Header headerController = (Header) mainApp.getRootLayout().getTop().getUserData();
