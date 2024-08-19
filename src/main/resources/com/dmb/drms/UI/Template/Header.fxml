@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<VBox styleClass="main-width" stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox styleClass="main-width" stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.utils.Header">
    <MenuBar>
       <Menu mnemonicParsing="false" text="File">
          <MenuItem mnemonicParsing="false" text="Close" />
@@ -55,7 +55,10 @@
          </styleClass>
       </VBox>
       <Region HBox.hgrow="ALWAYS" />
-      <HBox HBox.hgrow="ALWAYS">
+      <ImageView fx:id="headerRightImage" disable="true" fitHeight="100.0" fitWidth="225.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../../Images/Template/RightSide_Icon.png" />
+      </ImageView>
+      <HBox fx:id="headerRightPanel">
          <styleClass>
             <String fx:value="center" />
             <String fx:value="space-small" />
@@ -63,10 +66,10 @@
          <ImageView cache="true" cacheHint="SPEED" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../../Images/Body/AdminPanel/User.png" />
          </ImageView>
-         <MenuButton mnemonicParsing="false" text="Lumi">
+         <MenuButton fx:id="headerUsername" mnemonicParsing="false">
             <items>
                <MenuItem mnemonicParsing="false" text="Settings" />
-               <MenuItem mnemonicParsing="false" text="Logout" />
+               <MenuItem fx:id="logOut" mnemonicParsing="false" onAction="#handleLogOut" text="Logout" />
             </items>
          </MenuButton>
       </HBox>

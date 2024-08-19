@@ -1,12 +1,8 @@
 package com.dmb.drms;
 
-import com.dmb.drms.MainApplication;
-import com.dmb.drms.PasswordUpdateController;
-import com.dmb.drms.utils.AlertUtil;
-import com.dmb.drms.utils.DBConnection;
-import com.dmb.drms.utils.PasswordUtil;
-import com.dmb.drms.utils.SceneCache;
-import javafx.event.ActionEvent;
+import com.dmb.drms.utils.*;
+import com.dmb.drms.utils.sql.User;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -26,6 +22,9 @@ import java.sql.SQLException;
 public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
     private static final String DEFAULT_PASSWORD = "1234";
+    private static final String LOGIN_QUERY = "SELECT User_ID, Name, User_Name, NIC, Email, Phone, User_Role, Password_Hash, Password_Salt FROM Users WHERE User_Name = ?";
+    private static final String LOGIN_FAILED_MESSAGE = "Login Failed"; // Constant for "Login Failed"
+    private MainApplication mainApp;
 
     @FXML
     private TextField usernameField;
@@ -33,44 +32,74 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
+    public void setMainApp(MainApplication mainApp) {
+        this.mainApp = mainApp;
+    }
+
     @FXML
-    private void handleLogin(ActionEvent event) {
+    private void handleLogin() { // Removed unused 'event' parameter
         String username = usernameField.getText();
         String password = passwordField.getText();
 
         if (username.isEmpty() || password.isEmpty()) {
-            AlertUtil.showAlertWarning("Login Failed", "Please enter both username and password.");
+            AlertUtil.showAlertWarning(LOGIN_FAILED_MESSAGE, "Please enter both username and password.");
             return;
         }
 
+        Task<Void> loginTask = new Task<>() { // Using diamond operator <>
+            @Override
+            protected Void call() {
+                performLogin(username, password);
+                return null;
+            }
+        };
+
+        new Thread(loginTask).start();
+    }
+
+    private void performLogin(String username, String password) {
         try (Connection connection = DBConnection.getConnection()) {
-            String query = "SELECT Password_Hash, Password_Salt FROM Users WHERE User_Name = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, username);
-            ResultSet resultSet = statement.executeQuery();
+            try (PreparedStatement statement = connection.prepareStatement(LOGIN_QUERY)) {
+                statement.setString(1, username);
+                try (ResultSet resultSet = statement.executeQuery()) {
+                    if (resultSet.next()) {
+                        String passwordHash = resultSet.getString("Password_Hash");
+                        String passwordSalt = resultSet.getString("Password_Salt");
 
-            if (resultSet.next()) {
-                String passwordHash = resultSet.getString("Password_Hash");
-                String passwordSalt = resultSet.getString("Password_Salt");
+                        if (PasswordUtil.verifyPassword(password, passwordHash, passwordSalt)) {
+                            // Create a User object from the database results
+                            User user = new User(
+                                    resultSet.getInt("User_ID"),
+                                    resultSet.getString("Name"),
+                                    resultSet.getString("User_Name"),
+                                    resultSet.getString("NIC"),
+                                    resultSet.getString("Email"),
+                                    resultSet.getString("Phone"),
+                                    resultSet.getString("User_Role")
+                            );
 
-                // Check if the entered password matches the stored hash
-                if (PasswordUtil.verifyPassword(password, passwordHash, passwordSalt)) {
-                    if (password.equals(DEFAULT_PASSWORD)) {
-                        // Open the password update dialog
-                        openPasswordUpdateDialog(username);
+                            // Store the User object in the session
+                            Session.setCurrentUser(user);
+
+                            if (password.equals(DEFAULT_PASSWORD)) {
+                                javafx.application.Platform.runLater(() -> openPasswordUpdateDialog(username));
+                            } else {
+                                javafx.application.Platform.runLater(this::loadMainModulesPanel);
+                            }
+                        } else {
+                            javafx.application.Platform.runLater(() ->
+                                    AlertUtil.showAlertError(LOGIN_FAILED_MESSAGE, "Incorrect username or password."));
+                        }
                     } else {
-                        // Successful login, proceed to the main modules panel
-                        loadMainModulesPanel();
+                        javafx.application.Platform.runLater(() ->
+                                AlertUtil.showAlertError(LOGIN_FAILED_MESSAGE, "User not found."));
                     }
-                } else {
-                    AlertUtil.showAlertError("Login Failed", "Incorrect username or password.");
                 }
-            } else {
-                AlertUtil.showAlertError("Login Failed", "User not found.");
             }
         } catch (SQLException e) {
             logger.error("SQL Exception during login", e);
-            AlertUtil.showAlertError("Login Failed", "An error occurred while trying to log in.");
+            javafx.application.Platform.runLater(() ->
+                    AlertUtil.showAlertError(LOGIN_FAILED_MESSAGE, "An error occurred while trying to log in. Please try again."));
         }
     }
 
@@ -82,7 +111,6 @@ public class LoginController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(loader.load()));
 
-            // Pass the username to the PasswordUpdateController
             PasswordUpdateController controller = loader.getController();
             controller.setUsername(username);
 
@@ -95,9 +123,16 @@ public class LoginController {
 
     private void loadMainModulesPanel() {
         try {
-            SceneCache.clearCache(); // Clear cache to ensure the latest scene is loaded
-            MainApplication mainApp = new MainApplication();
+            SceneCache.clearCache();
             mainApp.loadCenterContent("/com/dmb/drms/UI/Panels/MainModulesPanel.fxml", true);
+
+            // Access the Header controller that was set earlier
+            Header headerController = (Header) mainApp.getRootLayout().getTop().getUserData();
+            if (headerController != null) {
+                headerController.updateHeaderAfterLogin();
+            } else {
+                logger.error("Header controller is null. Cannot update header after login.");
+            }
         } catch (Exception e) {
             logger.error("Failed to load the main modules panel", e);
             AlertUtil.showAlertError("Error", "Could not load the main modules panel.");
