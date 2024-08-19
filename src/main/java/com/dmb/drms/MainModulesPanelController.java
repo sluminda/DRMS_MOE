@@ -5,7 +5,6 @@ import com.dmb.drms.utils.sql.Session;
 import com.dmb.drms.utils.sql.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -106,20 +105,42 @@ public class MainModulesPanelController {
 
         moduleBox.getChildren().addAll(imageView, label);
 
-        // Event handler to load UserManagement.fxml when 'userManagement' module is clicked
-        if ("userManagement".equals(moduleFXID)) {
-            moduleBox.setOnMouseClicked(event -> loadUserManagementUI());
+        // Set the event handler based on the moduleFXID
+        switch (moduleFXID) {
+            case "dashboard":
+                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/Dashboard.fxml"));
+                break;
+            case "dailyLetters":
+                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/DailyLetters.fxml"));
+                break;
+            case "inquiry":
+                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/Inquiry.fxml"));
+                break;
+            case "reports":
+                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/Reports.fxml"));
+                break;
+            case "tableViews":
+                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/Provinces/Provinces.fxml"));
+                break;
+            case "masterTables":
+                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/MasterTables.fxml"));
+                break;
+            case "userManagement":
+                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/UserManagement/UserManagement.fxml"));
+                break;
+            default:
+                logger.warn("No handler found for module FX ID: {}", moduleFXID);
         }
 
         moduleContainer.getChildren().add(moduleBox);
     }
 
-    // To load the UserManagement.fxml into the BorderPane's center area
-    private void loadUserManagementUI() {
+    // Generic method to load different FXML files
+    private void loadUI(String fxmlFilePath) {
         if (mainApp != null) {
-            mainApp.loadCenterContent("/com/dmb/drms/UI/Panels/MainModules/UserManagement/UserManagement.fxml", true);
+            mainApp.loadCenterContent(fxmlFilePath, true);
         } else {
-            logger.error("MainApplication instance is null. Cannot load UserManagement UI.");
+            logger.error("MainApplication instance is null. Cannot load UI for path: {}", fxmlFilePath);
         }
     }
 }

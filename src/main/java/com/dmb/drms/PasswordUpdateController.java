@@ -3,7 +3,6 @@ package com.dmb.drms;
 import com.dmb.drms.utils.AlertUtil;
 import com.dmb.drms.utils.DBConnection;
 import com.dmb.drms.utils.PasswordUtil;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
@@ -16,6 +15,8 @@ import java.sql.SQLException;
 
 public class PasswordUpdateController {
     private static final Logger logger = LoggerFactory.getLogger(PasswordUpdateController.class);
+
+    private static final String UPDATE_FAILED = "Update Failed"; // Defined constant
 
     @FXML
     private PasswordField newPasswordField;
@@ -30,26 +31,27 @@ public class PasswordUpdateController {
     }
 
     @FXML
-    private void handlePasswordUpdate(ActionEvent event) {
+    private void handlePasswordUpdate() { // Removed unused 'event' parameter
         String newPassword = newPasswordField.getText();
         String confirmPassword = confirmPasswordField.getText();
 
         if (newPassword.isEmpty() || confirmPassword.isEmpty()) {
-            AlertUtil.showAlertWarning("Update Failed", "Please enter and confirm your new password.");
+            AlertUtil.showAlertWarning(UPDATE_FAILED, "Please enter and confirm your new password.");
             return;
         }
 
         if (!newPassword.equals(confirmPassword)) {
-            AlertUtil.showAlertError("Update Failed", "Passwords do not match.");
+            AlertUtil.showAlertError(UPDATE_FAILED, "Passwords do not match.");
             return;
         }
 
         String salt = PasswordUtil.generateSalt();
         String hashedPassword = PasswordUtil.hashPassword(newPassword, salt);
 
-        try (Connection connection = DBConnection.getConnection()) {
-            String query = "UPDATE Users SET Password_Hash = ?, Password_Salt = ? WHERE User_Name = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
+        try (Connection connection = DBConnection.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "UPDATE Users SET Password_Hash = ?, Password_Salt = ? WHERE User_Name = ?")) {
+
             statement.setString(1, hashedPassword);
             statement.setString(2, salt);
             statement.setString(3, username);
@@ -59,11 +61,11 @@ public class PasswordUpdateController {
                 AlertUtil.showAlertSuccess("Success", "Password updated successfully.");
                 closeWindow();
             } else {
-                AlertUtil.showAlertError("Update Failed", "An error occurred while updating the password.");
+                AlertUtil.showAlertError(UPDATE_FAILED, "An error occurred while updating the password.");
             }
         } catch (SQLException e) {
             logger.error("SQL Exception during password update", e);
-            AlertUtil.showAlertError("Update Failed", "An error occurred while updating the password.");
+            AlertUtil.showAlertError(UPDATE_FAILED, "An error occurred while updating the password.");
         }
     }
 
