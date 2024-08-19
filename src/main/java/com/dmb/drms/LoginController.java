@@ -1,6 +1,7 @@
 package com.dmb.drms;
 
 import com.dmb.drms.utils.*;
+import com.dmb.drms.utils.sql.Session;
 import com.dmb.drms.utils.sql.User;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -21,6 +22,7 @@ import java.sql.SQLException;
 
 public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
     private static final String DEFAULT_PASSWORD = "1234";
     private static final String LOGIN_QUERY = "SELECT User_ID, Name, User_Name, NIC, Email, Phone, User_Role, Password_Hash, Password_Salt FROM Users WHERE User_Name = ?";
     private static final String LOGIN_FAILED_MESSAGE = "Login Failed"; // Constant for "Login Failed"

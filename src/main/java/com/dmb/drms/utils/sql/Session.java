@@ -1,6 +1,4 @@
-package com.dmb.drms.utils;
-
-import com.dmb.drms.utils.sql.User;
+package com.dmb.drms.utils.sql;
 
 public class Session {
     private static User currentUser;

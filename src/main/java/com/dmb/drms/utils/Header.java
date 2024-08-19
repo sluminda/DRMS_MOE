@@ -1,6 +1,7 @@
 package com.dmb.drms.utils;
 
 import com.dmb.drms.MainApplication;
+import com.dmb.drms.utils.sql.Session;
 import com.dmb.drms.utils.sql.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuButton;

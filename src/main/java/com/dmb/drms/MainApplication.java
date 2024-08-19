@@ -3,7 +3,7 @@ package com.dmb.drms;
 import com.dmb.drms.utils.AlertUtil;
 import com.dmb.drms.utils.Header;
 import com.dmb.drms.utils.SceneCache;
-import com.dmb.drms.utils.Session;
+import com.dmb.drms.utils.sql.Session;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
