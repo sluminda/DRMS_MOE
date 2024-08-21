@@ -1,8 +1,6 @@
 package com.dmb.drms;
 
-import com.dmb.drms.utils.AlertUtil;
-import com.dmb.drms.utils.Header;
-import com.dmb.drms.utils.SceneCache;
+import com.dmb.drms.utils.*;
 import com.dmb.drms.utils.sql.Session;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +17,11 @@ import java.io.IOException;
 
 public class MainApplication extends Application {
     private BorderPane rootLayout;
-    private static final Logger logger = LoggerFactory.getLogger(MainApplication.class);
     private Stage primaryStage;
+    private static final Logger logger = LoggerFactory.getLogger(MainApplication.class);
+
+    // Private navigation history instance
+    private final NavigationHistory navigationHistory = new NavigationHistory();
 
     @Override
     public void start(Stage stage) {
@@ -61,39 +62,55 @@ public class MainApplication extends Application {
         }
     }
 
+    public NavigationHistory getNavigationHistory() {
+        return navigationHistory;
+    }
+
     public void loadCenterContent(String fxmlFilePath, boolean cacheScene) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFilePath));
-            Node centerNode;
+            Parent centerNode;
+            Object controller;
+
             if (cacheScene) {
+                // Try to get the scene and controller from the cache
                 centerNode = SceneCache.getScene(fxmlFilePath);
+                controller = SceneCache.getController(fxmlFilePath);
+
+                if (centerNode == null || controller == null) {
+                    // Load and cache the scene if not already cached
+                    centerNode = SceneCache.loadAndCacheScene(fxmlFilePath);
+                    controller = SceneCache.getController(fxmlFilePath);  // Get the controller after caching
+                }
             } else {
+                // Load the scene without caching it
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFilePath));
                 centerNode = loader.load();
+                controller = loader.getController();
             }
+
+            // Set the center of the root layout to the new scene
             rootLayout.setCenter(centerNode);
 
-            // If it's the login screen, don't cache it
-            if (fxmlFilePath.contains("LoginPanel.fxml")) {
-                SceneCache.clearCache();
+            // Automatically set MainApp reference if the controller implements MainAppController
+            if (controller instanceof MainAppController mainAppController) {
+                mainAppController.setMainApp(this);
             }
 
-            // Set mainApp reference in controller if needed
-            Object controller = loader.getController();
-            if (controller instanceof LoginController loginController) {
-                loginController.setMainApp(this);
-            }
+            // Add to navigation history
+            navigationHistory.addEntry(fxmlFilePath);
+
         } catch (IOException e) {
             logger.error("Failed to load FXML file: {}", fxmlFilePath, e);
         }
     }
 
+
     private void openDeveloperMode() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/dmb/drms/UI/Template/LogViewer.fxml"));
-            Node developerModeLayout = loader.load();
+            Parent developerModeLayout = loader.load();
 
-            // Cast the Node to Parent to use it in the Scene constructor
-            Scene developerScene = new Scene((Parent) developerModeLayout);
+            Scene developerScene = new Scene(developerModeLayout);
 
             Stage developerStage = new Stage();
             developerStage.setTitle("Developer Mode");
@@ -104,8 +121,6 @@ public class MainApplication extends Application {
             AlertUtil.showAlertError("Error", "Could not open Developer Mode.");
         }
     }
-
-
 
     public void logOut() {
         try {
@@ -131,7 +146,6 @@ public class MainApplication extends Application {
         }
     }
 
-
     public BorderPane getRootLayout() {
         return rootLayout;
     }
@@ -141,6 +155,6 @@ public class MainApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }

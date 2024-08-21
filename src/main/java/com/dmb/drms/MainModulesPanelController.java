@@ -1,6 +1,8 @@
 package com.dmb.drms;
 
 import com.dmb.drms.utils.DBConnection;
+import com.dmb.drms.utils.MainAppController;
+import com.dmb.drms.utils.NavigationHistory;
 import com.dmb.drms.utils.sql.Session;
 import com.dmb.drms.utils.sql.User;
 import javafx.application.Platform;
@@ -21,7 +23,7 @@ import java.sql.SQLException;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
-public class MainModulesPanelController {
+public class MainModulesPanelController extends MainAppController {
     private static final Logger logger = LoggerFactory.getLogger(MainModulesPanelController.class);
 
     @FXML
@@ -35,13 +37,6 @@ public class MainModulesPanelController {
                     logger.error("Failed to load modules asynchronously", ex);
                     return null;
                 });
-    }
-
-    private MainApplication mainApp; // Reference to the MainApplication
-
-    // Method to set the MainApplication instance
-    public void setMainApp(MainApplication mainApp) {
-        this.mainApp = mainApp;
     }
 
     private void loadModules() {
@@ -120,10 +115,10 @@ public class MainModulesPanelController {
                 moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/Reports.fxml"));
                 break;
             case "tableViews":
-                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/Provinces/Provinces.fxml"));
+                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/Provinces/Districts.fxml"));
                 break;
             case "masterTables":
-                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/MasterTables.fxml"));
+                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/Provinces/Provinces.fxml"));
                 break;
             case "userManagement":
                 moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/UserManagement/UserManagement.fxml"));

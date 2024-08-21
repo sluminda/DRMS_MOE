@@ -15,12 +15,22 @@
       <String fx:value="spacing-small" />
    </styleClass>
    <HBox styleClass="header-container">
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goBackward" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/Template/backward.png" />
+         </image>
+      </ImageView>
       <Region HBox.hgrow="ALWAYS" />
       <ImageView cache="true" cacheHint="SPEED" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../Images/Body/MainModules/navigation.png" />
       </ImageView>
       <Label styleClass="header-label" text="Main Modules" />
       <Region HBox.hgrow="ALWAYS" />
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goForward" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/Template/forward.png" />
+         </image>
+      </ImageView>
    </HBox>
 
    <TilePane fx:id="moduleContainer" styleClass="module-container" tileAlignment="TOP_LEFT" VBox.vgrow="ALWAYS">

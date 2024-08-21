@@ -2,6 +2,7 @@ package com.dmb.drms.user_registration;
 
 import com.dmb.drms.utils.AlertUtil;
 import com.dmb.drms.utils.DBConnection;
+import com.dmb.drms.utils.MainAppController;
 import com.dmb.drms.utils.PasswordUtil;
 import com.dmb.drms.utils.sql.User;
 import javafx.collections.FXCollections;
@@ -14,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
-public class UserRegistrationController {
+public class UserRegistrationController extends MainAppController {
 
     private static final Logger logger = LoggerFactory.getLogger(UserRegistrationController.class);
 
