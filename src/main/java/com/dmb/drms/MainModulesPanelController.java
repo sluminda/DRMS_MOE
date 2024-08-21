@@ -2,7 +2,6 @@ package com.dmb.drms;
 
 import com.dmb.drms.utils.DBConnection;
 import com.dmb.drms.utils.MainAppController;
-import com.dmb.drms.utils.NavigationHistory;
 import com.dmb.drms.utils.sql.Session;
 import com.dmb.drms.utils.sql.User;
 import javafx.application.Platform;
@@ -103,7 +102,7 @@ public class MainModulesPanelController extends MainAppController {
         // Set the event handler based on the moduleFXID
         switch (moduleFXID) {
             case "dashboard":
-                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/Dashboard.fxml"));
+                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/UserManagement/1.fxml"));
                 break;
             case "dailyLetters":
                 moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/DailyLetters.fxml"));

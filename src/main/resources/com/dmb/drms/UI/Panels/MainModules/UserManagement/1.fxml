@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox minHeight="435.0" minWidth="800.0" style="-fx-background-color: red;" styleClass="-main-container" stylesheets="@../../../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.Nav1">
+   <HBox styleClass="header-container">
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goBackward" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../../../../Images/Template/backward.png" />
+      </ImageView>
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goFastBackward" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Images/Template/backward.png" />
+         </image>
+      </ImageView>
+      <Region HBox.hgrow="ALWAYS" />
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@../../../../Images/Body/UserManagement/user-manage.png" />
+      </ImageView>
+      <Label styleClass="header-label" text="Panel 1" />
+      <Region HBox.hgrow="ALWAYS" />
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <Image url="@../../../../Images/Template/forward.png" />
+      </ImageView>
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goFastForward" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Images/Template/forward.png" />
+         </image>
+      </ImageView>
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goForward" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Images/Template/forward.png" />
+         </image>
+      </ImageView>
+   </HBox>
+   <HBox VBox.vgrow="ALWAYS">
+      <styleClass>
+         <String fx:value="module-container" />
+         <String fx:value="spacing-small" />
+      </styleClass>
+      <VBox maxWidth="320.0" styleClass="spacing-small" HBox.hgrow="ALWAYS">
+         <ScrollPane fitToHeight="true" fitToWidth="true" style="-fx-background-color: lightblue;" VBox.vgrow="ALWAYS" />
+      </VBox>
+      <VBox styleClass="spacing-small" HBox.hgrow="ALWAYS">
+         <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
+            <content>
+               <Button mnemonicParsing="false" onAction="#handleLoadPanel1" text="Go Panel 2" />
+            </content></ScrollPane>
+      </VBox>
+   </HBox>
+</VBox>

@@ -96,13 +96,16 @@ public class MainApplication extends Application {
                 mainAppController.setMainApp(this);
             }
 
-            // Add to navigation history
-            navigationHistory.addEntry(fxmlFilePath);
+            // Add to navigation history if it's not the login panel
+            if (!fxmlFilePath.contains("LoginPanel.fxml")) {
+                navigationHistory.addEntry(fxmlFilePath);
+            }
 
         } catch (IOException e) {
             logger.error("Failed to load FXML file: {}", fxmlFilePath, e);
         }
     }
+
 
 
     private void openDeveloperMode() {
@@ -130,6 +133,9 @@ public class MainApplication extends Application {
             // Clear the scene cache to free up memory
             SceneCache.clearCache();
 
+            // Clear the navigation history
+            navigationHistory.clearHistory();
+
             // Load the login screen
             loadCenterContent("/com/dmb/drms/UI/Panels/LoginPanel.fxml", false);
 
@@ -145,6 +151,7 @@ public class MainApplication extends Application {
             AlertUtil.showAlertError("Logout Failed", "An error occurred during logout. Please try again.");
         }
     }
+
 
     public BorderPane getRootLayout() {
         return rootLayout;

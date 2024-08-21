@@ -12,17 +12,23 @@ public abstract class MainAppController {
 
     @FXML
     private void goBackward() {
-        String previousPage = mainApp.getNavigationHistory().goBackward();
-        if (previousPage != null) {
-            mainApp.loadCenterContent(previousPage, true);
+        while (mainApp.getNavigationHistory().canGoBackward()) {
+            String previousPage = mainApp.getNavigationHistory().goBackward();
+            if (previousPage != null) {
+                mainApp.loadCenterContent(previousPage, true);
+                break;
+            }
         }
     }
 
     @FXML
     private void goForward() {
-        String nextPage = mainApp.getNavigationHistory().goForward();
-        if (nextPage != null) {
-            mainApp.loadCenterContent(nextPage, true);
+        while (mainApp.getNavigationHistory().canGoForward()) {
+            String nextPage = mainApp.getNavigationHistory().goForward();
+            if (nextPage != null) {
+                mainApp.loadCenterContent(nextPage, true);
+                break;
+            }
         }
     }
 
