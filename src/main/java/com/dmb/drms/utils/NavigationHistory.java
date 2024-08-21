@@ -1,10 +1,13 @@
 package com.dmb.drms.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class NavigationHistory {
-
+    private static final Logger logger = LoggerFactory.getLogger(NavigationHistory.class);
     private final List<String> history;
     private int currentIndex;
 
@@ -22,6 +25,7 @@ public class NavigationHistory {
 
         // If we are adding a new entry and there are forward entries, remove them
         if (currentIndex < history.size() - 1) {
+            logger.debug("Clearing forward history from index: " + (currentIndex + 1));
             history.subList(currentIndex + 1, history.size()).clear();
         }
 
@@ -29,6 +33,7 @@ public class NavigationHistory {
         history.add(fxmlFilePath);
         currentIndex = history.size() - 1;
     }
+
 
     // Go backward in the navigation history
     public String goBackward() {

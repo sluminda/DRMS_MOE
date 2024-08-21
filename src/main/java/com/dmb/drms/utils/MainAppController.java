@@ -36,7 +36,7 @@ public abstract class MainAppController {
     private void goFastBackward() {
         String firstPage = mainApp.getNavigationHistory().goFastBackward();
         if (firstPage != null) {
-            mainApp.loadCenterContent(firstPage, false);
+            mainApp.loadCenterContent(firstPage, true);
         }
     }
 
@@ -44,7 +44,7 @@ public abstract class MainAppController {
     private void goFastForward() {
         String lastPage = mainApp.getNavigationHistory().goFastForward();
         if (lastPage != null) {
-            mainApp.loadCenterContent(lastPage, false);
+            mainApp.loadCenterContent(lastPage, true);
         }
     }
 }

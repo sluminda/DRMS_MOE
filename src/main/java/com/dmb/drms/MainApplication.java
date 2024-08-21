@@ -96,8 +96,10 @@ public class MainApplication extends Application {
                 mainAppController.setMainApp(this);
             }
 
-            // Add to navigation history if it's not the login panel
-            if (!fxmlFilePath.contains("LoginPanel.fxml")) {
+            // Check if history is not empty before accessing the current index
+            if (!fxmlFilePath.contains("LoginPanel.fxml") &&
+                    (navigationHistory.getCurrentIndex() == -1 ||
+                            !fxmlFilePath.equals(navigationHistory.getHistory().get(navigationHistory.getCurrentIndex())))) {
                 navigationHistory.addEntry(fxmlFilePath);
             }
 
@@ -105,8 +107,6 @@ public class MainApplication extends Application {
             logger.error("Failed to load FXML file: {}", fxmlFilePath, e);
         }
     }
-
-
 
     private void openDeveloperMode() {
         try {
