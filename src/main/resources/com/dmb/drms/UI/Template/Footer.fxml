@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Region?>
 
 
-<HBox stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.utils.Footer">
+<HBox stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.utils.FooterController">
       <Region minWidth="175.0" HBox.hgrow="ALWAYS" />
       <Label text="© 2024 Data Management Branch - Ministry of Education" HBox.hgrow="ALWAYS">
       <styleClass>

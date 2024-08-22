@@ -16,7 +16,7 @@ public class Nav2 extends MainAppController {
 
 
 
-<VBox minHeight="435.0" minWidth="800.0" styleClass="-main-container" stylesheets="@../../../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.Nav2">
+<VBox minHeight="435.0" minWidth="800.0" styleClass="-main-container" stylesheets="@../../../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.main_modules.extra.Nav2">
    <HBox styleClass="header-container">
       <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goBackward" pickOnBounds="true" preserveRatio="true">
          <Image url="@../../../../Images/Template/backward.png" />

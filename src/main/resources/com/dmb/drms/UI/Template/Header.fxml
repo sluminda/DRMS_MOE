@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<VBox styleClass="main-width" stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.utils.Header">
+<VBox styleClass="main-width" stylesheets="@../../CSS/Template/Template.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.utils.HeaderController">
    <MenuBar>
       <Menu mnemonicParsing="false" text="File">
          <MenuItem mnemonicParsing="false" text="Close" />

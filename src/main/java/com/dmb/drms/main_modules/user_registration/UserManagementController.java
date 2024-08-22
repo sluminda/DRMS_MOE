@@ -1,4 +1,4 @@
-package com.dmb.drms.user_registration;
+package com.dmb.drms.main_modules.user_registration;
 
 import com.dmb.drms.utils.AlertUtil;
 import com.dmb.drms.utils.DBConnection;
@@ -15,9 +15,9 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
-public class UserRegistrationController extends MainAppController {
+public class UserManagementController extends MainAppController {
 
-    private static final Logger logger = LoggerFactory.getLogger(UserRegistrationController.class);
+    private static final Logger logger = LoggerFactory.getLogger(UserManagementController.class);
 
     @FXML
     private TextArea name;

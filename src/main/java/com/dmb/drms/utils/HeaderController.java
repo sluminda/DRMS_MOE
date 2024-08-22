@@ -10,9 +10,9 @@ import javafx.scene.layout.HBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Header {
+public class HeaderController {
 
-    private static final Logger logger = LoggerFactory.getLogger(Header.class);
+    private static final Logger logger = LoggerFactory.getLogger(HeaderController.class);
     private MainApplication mainApp;
 
     @FXML

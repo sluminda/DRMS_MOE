@@ -22,8 +22,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginController extends MainAppController {
-    private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+public class LoginPanelController extends MainAppController {
+    private static final Logger logger = LoggerFactory.getLogger(LoginPanelController.class);
 
     private static final String DEFAULT_PASSWORD = "1234";
     private static final String LOGIN_QUERY = "SELECT User_ID, Name, User_Name, NIC, Email, Phone, User_Role, Password_Hash, Password_Salt FROM Users WHERE User_Name = ?";
@@ -139,7 +139,7 @@ public class LoginController extends MainAppController {
 
             // Additional UI updates as needed
             // For example, updating header or status messages
-            Header headerController = (Header) rootLayout.getTop().getUserData();
+            HeaderController headerController = (HeaderController) rootLayout.getTop().getUserData();
             if (headerController != null) {
                 headerController.updateHeaderAfterLogin();
             } else {

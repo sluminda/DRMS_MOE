@@ -23,6 +23,7 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public class MainModulesPanelController extends MainAppController {
+
     private static final Logger logger = LoggerFactory.getLogger(MainModulesPanelController.class);
 
     @FXML
@@ -101,8 +102,9 @@ public class MainModulesPanelController extends MainAppController {
 
         // Set the event handler based on the moduleFXID
         switch (moduleFXID) {
+
             case "dashboard":
-                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/UserManagement/1.fxml"));
+                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Extra/1.fxml"));
                 break;
             case "dailyLetters":
                 moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/DailyLetters.fxml"));

@@ -34,7 +34,7 @@ public class MainApplication extends Application {
             // Load the header and set it to the top of the BorderPane
             FXMLLoader headerLoader = new FXMLLoader(getClass().getResource("/com/dmb/drms/UI/Template/Header.fxml"));
             Node headerNode = headerLoader.load();
-            Header headerController = headerLoader.getController();
+            HeaderController headerController = headerLoader.getController();
             headerController.setMainApp(this); // Pass mainApp reference to header controller
             rootLayout.setTop(headerNode);
             rootLayout.getTop().setUserData(headerController);
@@ -140,7 +140,7 @@ public class MainApplication extends Application {
             loadCenterContent("/com/dmb/drms/UI/Panels/LoginPanel.fxml", false);
 
             // Reset the header to initial state
-            Header headerController = (Header) rootLayout.getTop().getUserData();
+            HeaderController headerController = (HeaderController) rootLayout.getTop().getUserData();
             if (headerController != null) {
                 headerController.initialize();
             }

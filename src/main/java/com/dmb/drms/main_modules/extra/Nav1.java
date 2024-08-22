@@ -1,4 +1,4 @@
-package com.dmb.drms;
+package com.dmb.drms.main_modules.extra;
 
 import com.dmb.drms.utils.MainAppController;
 import javafx.fxml.FXML;
@@ -10,7 +10,7 @@ public class Nav1 extends MainAppController {
     @FXML
     public void handleLoadPanel1() {
         if (mainApp != null) {
-            mainApp.loadCenterContent("/com/dmb/drms/UI/Panels/MainModules/UserManagement/2.fxml", true);
+            mainApp.loadCenterContent("/com/dmb/drms/UI/Extra/2.fxml", true);
         } else {
             logger.error("MainApp is null");
         }

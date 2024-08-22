@@ -1,4 +1,4 @@
-package com.dmb.drms;
+package com.dmb.drms.main_modules.extra;
 
 import com.dmb.drms.utils.MainAppController;
 import javafx.fxml.FXML;

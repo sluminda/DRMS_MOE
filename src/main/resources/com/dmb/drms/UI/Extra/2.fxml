@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
@@ -9,33 +10,33 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox minHeight="435.0" minWidth="800.0" styleClass="-main-container" stylesheets="@../../../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.Nav5">
+<VBox minHeight="435.0" minWidth="800.0" styleClass="-main-container" stylesheets="@../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.main_modules.extra.Nav2">
    <HBox styleClass="header-container">
       <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goBackward" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../../../../Images/Template/backward.png" />
+         <Image url="@../../Images/Template/backward.png" />
       </ImageView>
       <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goFastBackward" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Images/Template/backward.png" />
+            <Image url="@../../Images/Template/backward.png" />
          </image>
       </ImageView>
       <Region HBox.hgrow="ALWAYS" />
       <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-         <Image url="@../../../../Images/Body/UserManagement/user-manage.png" />
+         <Image url="@../../Images/Body/UserManagement/user-manage.png" />
       </ImageView>
-      <Label styleClass="header-label" text="End Here Panel 5" />
+      <Label styleClass="header-label" text="Panel 2" />
       <Region HBox.hgrow="ALWAYS" />
       <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <Image url="@../../../../Images/Template/forward.png" />
+         <Image url="@../../Images/Template/forward.png" />
       </ImageView>
       <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goFastForward" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Images/Template/forward.png" />
+            <Image url="@../../Images/Template/forward.png" />
          </image>
       </ImageView>
       <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goForward" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../Images/Template/forward.png" />
+            <Image url="@../../Images/Template/forward.png" />
          </image>
       </ImageView>
    </HBox>
@@ -48,7 +49,10 @@
          <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS" />
       </VBox>
       <VBox styleClass="spacing-small" HBox.hgrow="ALWAYS">
-         <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS" />
+         <ScrollPane fitToHeight="true" fitToWidth="true" VBox.vgrow="ALWAYS">
+            <content>
+               <Button mnemonicParsing="false" onAction="#handleLoadPanel2" text="Go to Panel 3" />
+            </content></ScrollPane>
       </VBox>
    </HBox>
 </VBox>

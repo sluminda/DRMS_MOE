@@ -17,6 +17,12 @@ module com.dmb.drms {
     opens com.dmb.drms.utils.sql to javafx.fxml;
     exports com.dmb.drms.utils.sql;
 
-    opens com.dmb.drms.user_registration to javafx.fxml;
-    exports com.dmb.drms.user_registration;
+    opens com.dmb.drms.main_modules.user_registration to javafx.fxml;
+    exports com.dmb.drms.main_modules.user_registration;
+
+    opens com.dmb.drms.main_modules.extra to javafx.fxml;
+    exports com.dmb.drms.main_modules.extra;
+
+    opens com.dmb.drms.main_modules.table_views to javafx.fxml;
+    exports com.dmb.drms.main_modules.table_views;
 }
