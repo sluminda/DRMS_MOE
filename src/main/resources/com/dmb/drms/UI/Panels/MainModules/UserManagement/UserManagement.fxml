@@ -132,10 +132,10 @@
                      <String fx:value="spacing-small" />
                      <String fx:value="center" />
                   </styleClass>
-                  <Button fx:id="insertUser" mnemonicParsing="false" onAction="#insertUser" text="Insert" />
-                  <Button fx:id="updateUser" mnemonicParsing="false" onAction="#updateUser" text="Update" />
-                  <Button fx:id="deleteUser" mnemonicParsing="false" onAction="#deleteUser" text="Delete" />
-                  <Button fx:id="clearForm" mnemonicParsing="false" onAction="#clearForm" text="Clear" />
+                  <Button mnemonicParsing="false" onAction="#insertUser" text="Insert" />
+                  <Button mnemonicParsing="false" onAction="#updateUser" text="Update" />
+                  <Button mnemonicParsing="false" onAction="#deleteUser" text="Delete" />
+                  <Button mnemonicParsing="false" onAction="#clearForm" text="Clear" />
                </HBox>
             </VBox>
          </ScrollPane>

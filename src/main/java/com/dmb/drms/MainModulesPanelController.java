@@ -2,24 +2,20 @@ package com.dmb.drms;
 
 import com.dmb.drms.utils.DBConnection;
 import com.dmb.drms.utils.MainAppController;
+import com.dmb.drms.utils.UIUtils;
 import com.dmb.drms.utils.sql.Session;
 import com.dmb.drms.utils.sql.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public class MainModulesPanelController extends MainAppController {
@@ -71,38 +67,11 @@ public class MainModulesPanelController extends MainAppController {
     }
 
     private void addModuleToUI(String moduleName, String moduleFXID, String imagePath) {
-        VBox moduleBox = new VBox();
-        moduleBox.getStyleClass().add("module");
-        moduleBox.setId(moduleFXID);
-
-        ImageView imageView = new ImageView();
-        imageView.setCache(true);
-        imageView.setFitHeight(55.0);
-        imageView.setFitWidth(55.0);
-        imageView.setPickOnBounds(true);
-        imageView.setPreserveRatio(true);
-
-        // Adjust the image path by removing the '@' symbol
-        String adjustedImagePath = imagePath.replace("@", "");
-
-        // Ensure the path is relative to the classpath
-        URL imageUrl = getClass().getResource(adjustedImagePath);
-
-        if (imageUrl != null) {
-            imageView.setImage(new Image(imageUrl.toExternalForm()));
-        } else {
-            logger.error("Failed to load image at path: {}", adjustedImagePath);
-            // Optionally, set a default image if the original image is not found
-            imageView.setImage(new Image(Objects.requireNonNull(getClass().getResource("/com/dmb/drms/Images/Body/MainModules/dashboard.png")).toExternalForm()));
-        }
-
-        Label label = new Label(moduleName);
-
-        moduleBox.getChildren().addAll(imageView, label);
+        // Use the UIUtils.createModuleBox method
+        VBox moduleBox = UIUtils.createModuleBox(moduleName, moduleFXID, imagePath, "/com/dmb/drms/Images/Body/MainModules/dashboard.png");
 
         // Set the event handler based on the moduleFXID
         switch (moduleFXID) {
-
             case "dashboard":
                 moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Extra/1.fxml"));
                 break;
@@ -116,7 +85,7 @@ public class MainModulesPanelController extends MainAppController {
                 moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/Reports.fxml"));
                 break;
             case "tableViews":
-                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/Provinces/Districts.fxml"));
+                moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/TableViews/TableViewMainCategory.fxml"));
                 break;
             case "masterTables":
                 moduleBox.setOnMouseClicked(event -> loadUI("/com/dmb/drms/UI/Panels/MainModules/Provinces/Provinces.fxml"));

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox stylesheets="@../../../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.main_modules.table_views.TableViewsModuleController">
+<VBox stylesheets="@../../../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.main_modules.table_views.TableViewMainCategoryController">
    <styleClass>
       <String fx:value="-main-container" />
       <String fx:value="spacing-small" />
@@ -43,7 +43,7 @@
       </ImageView>
    </HBox>
 
-   <TilePane fx:id="tableViewsContainer" styleClass="module-container" tileAlignment="TOP_LEFT" VBox.vgrow="ALWAYS">
+   <TilePane fx:id="tableViewMainCategoryContainer" styleClass="module-container" tileAlignment="TOP_LEFT" VBox.vgrow="ALWAYS">
       <!-- Modules will be dynamically added here -->
    </TilePane>
 

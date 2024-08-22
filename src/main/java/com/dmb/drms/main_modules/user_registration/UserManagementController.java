@@ -48,12 +48,6 @@ public class UserManagementController extends MainAppController {
     @FXML
     private CheckBox userManagement;
     @FXML
-    private Button insertUser;
-    @FXML
-    private Button updateUser;
-    @FXML
-    private Button deleteUser;
-    @FXML
     private TableView<User> userListTable;
     @FXML
     private TableColumn<User, Integer> colID;

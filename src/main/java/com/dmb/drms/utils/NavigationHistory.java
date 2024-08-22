@@ -25,7 +25,7 @@ public class NavigationHistory {
 
         // If we are adding a new entry and there are forward entries, remove them
         if (currentIndex < history.size() - 1) {
-            logger.debug("Clearing forward history from index: " + (currentIndex + 1));
+            logger.debug("Clearing forward history from index: {}", currentIndex + 1);
             history.subList(currentIndex + 1, history.size()).clear();
         }
 
@@ -33,7 +33,6 @@ public class NavigationHistory {
         history.add(fxmlFilePath);
         currentIndex = history.size() - 1;
     }
-
 
     // Go backward in the navigation history
     public String goBackward() {

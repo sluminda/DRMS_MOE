@@ -4,6 +4,9 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/dmb/drms/LoginPanelController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/dmb/drms/MainModulesPanelController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/dmb/drms/PasswordUpdateController.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/dmb/drms/main_modules/table_views/ProvincesTableViewCategory.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/dmb/drms/main_modules/table_views/TableViewMainCategoryController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/dmb/drms/main_modules/user_registration/UserManagementController.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/sources/A.sql" dialect="MySQL" />
   </component>
 </project>
