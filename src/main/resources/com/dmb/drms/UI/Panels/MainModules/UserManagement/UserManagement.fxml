@@ -20,7 +20,10 @@
 
 <VBox minHeight="435.0" minWidth="800.0" styleClass="-main-container" stylesheets="@../../../../CSS/Panels/Body.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dmb.drms.main_modules.user_registration.UserManagementController">
    <HBox styleClass="header-container">
-      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goBackward" pickOnBounds="true" preserveRatio="true">
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goBackward" pickOnBounds="true" preserveRatio="true" styleClass="navigation">
+         <Image url="@../../../../Images/Template/backward.png" />
+      </ImageView>
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goFastBackward" pickOnBounds="true" preserveRatio="true" styleClass="navigation">
          <Image url="@../../../../Images/Template/backward.png" />
       </ImageView>
       <Region HBox.hgrow="ALWAYS" />
@@ -30,6 +33,12 @@
       <Label styleClass="header-label" text="User Management" />
       <Region HBox.hgrow="ALWAYS" />
       <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <Image url="@../../../../Images/Template/forward.png" />
+      </ImageView>
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goFastForward" pickOnBounds="true" preserveRatio="true" styleClass="navigation">
+         <Image url="@../../../../Images/Template/forward.png" />
+      </ImageView>
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goForward" pickOnBounds="true" preserveRatio="true" styleClass="navigation">
          <Image url="@../../../../Images/Template/forward.png" />
       </ImageView>
    </HBox>

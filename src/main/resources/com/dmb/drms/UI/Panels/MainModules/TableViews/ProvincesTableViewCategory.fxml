@@ -15,13 +15,11 @@
       <String fx:value="spacing-small" />
    </styleClass>
    <HBox styleClass="header-container">
-      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goBackward"
-                 pickOnBounds="true" preserveRatio="true">
-         <Image url="@../../../../Images/Template/backward.png"/>
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goBackward" pickOnBounds="true" preserveRatio="true" styleClass="navigation">
+         <Image url="@../../../../Images/Template/backward.png" />
       </ImageView>
-      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goFastBackward"
-                 pickOnBounds="true" preserveRatio="true">
-         <Image url="@../../../../Images/Template/backward.png"/>
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goFastBackward" pickOnBounds="true" preserveRatio="true" styleClass="navigation">
+         <Image url="@../../../../Images/Template/backward.png" />
       </ImageView>
       <Region HBox.hgrow="ALWAYS" />
       <ImageView cache="true" cacheHint="SPEED" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -29,13 +27,11 @@
       </ImageView>
       <Label styleClass="header-label" text="Provinces List" />
       <Region HBox.hgrow="ALWAYS" />
-      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goFastForward"
-                 pickOnBounds="true" preserveRatio="true">
-         <Image url="@../../../../Images/Template/forward.png"/>
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goFastForward" pickOnBounds="true" preserveRatio="true" styleClass="navigation">
+         <Image url="@../../../../Images/Template/forward.png" />
       </ImageView>
-      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goForward"
-                 pickOnBounds="true" preserveRatio="true">
-         <Image url="@../../../../Images/Template/forward.png"/>
+      <ImageView cache="true" cacheHint="SPEED" fitHeight="35.0" fitWidth="35.0" onMouseClicked="#goForward" pickOnBounds="true" preserveRatio="true" styleClass="navigation">
+         <Image url="@../../../../Images/Template/forward.png" />
       </ImageView>
    </HBox>
 

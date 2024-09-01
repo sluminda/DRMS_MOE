@@ -2,6 +2,16 @@
     -fx-font-family: 'Open Sans', sans-serif;
 }
 
+/*
+-------------------
+Navigation Buttons
+-------------------
+*/
+
+.navigation:hover{
+    -fx-cursor: hand;
+}
+
 .-main-container{
     -fx-min-width: 800;
     -fx-min-height: 440;
@@ -109,3 +119,4 @@ Headers & Titles
     -fx-font-weight: bold;
     -fx-text-fill: #fff;
 }
+
